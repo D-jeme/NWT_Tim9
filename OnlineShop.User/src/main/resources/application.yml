@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: USERS
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7282808
+    username: sql7282808
+    password: ZWzWCxQHYf
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+server:
+  port: 8081
