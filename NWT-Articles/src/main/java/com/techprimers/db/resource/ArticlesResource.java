@@ -35,6 +35,8 @@ public class ArticlesResource {
     @Autowired
     private RestTemplate restTemplate;
 
+
+
     @GetMapping(value = "/1")
     public ResponseEntity<?>get1(){
         System.out.println("tu sam");

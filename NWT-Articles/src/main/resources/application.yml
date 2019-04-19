@@ -3,9 +3,14 @@ spring:
     name: articles
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/baza?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password:
+    url: jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7286303
+    username: sql7286303
+    password: sn67y9rl1x
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: quest
+    password: quest
 
   jpa:
     hibernate.ddl-auto: update
