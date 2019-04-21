@@ -43,26 +43,56 @@ public class PicturesResource {
 
     @PostMapping(value = "/")
     public ResponseEntity<?> persist(@RequestBody final Pictures pictures) {
-
+        System.out.println("Ima liiiiiiiii MEEEEE"+pictures);
+        System.out.println("SLIKAAAAAAA"+pictures.getSlika());
         Map<String, Object> message = new HashMap<String, Object>();
         if (pictures.getSlika() == "" || pictures.getSlika() == null){
-
+            System.out.println("POLJEEEE PUNOOOOO");
             message.put("MESSAGE", "Polje slika se mora popuniti");
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
 
         if (!isUrl(pictures.getSlika())){
-
+            System.out.println("POLJEEEEE PRAZNOOOOO");
             message.put("MESSAGE", "Polje slika se mora biti URL");
             return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+        picturesRepository.save(pictures);
+        System.out.println("TU SAMMMM");
+        return new ResponseEntity<Collection<Pictures>>(this.picturesRepository.findAll(), HttpStatus.OK);
+    }
+
+
+    @PostMapping(value = "/picture")
+    public String CreatePicture(@RequestBody final Pictures pictures) {
+        System.out.println("Ima liiiiiiiii MEEEEE"+pictures);
+        System.out.println("SLIKAAAAAAA"+pictures.getSlika());
+        Map<String, Object> message = new HashMap<String, Object>();
+        if (pictures.getSlika() == "" || pictures.getSlika() == null){
+            System.out.println("POLJEEEE PUNOOOOO");
+            message.put("MESSAGE", "Polje slika se mora popuniti");
+            return "Nije kreiranaa";
+        }
+
+        if (!isUrl(pictures.getSlika())){
+            System.out.println("POLJEEEEE PRAZNOOOOO");
+            message.put("MESSAGE", "Polje slika se mora biti URL");
+            return "Nije kreirana";
         }
 
 
         picturesRepository.save(pictures);
 
-        return new ResponseEntity<Collection<Pictures>>(this.picturesRepository.findAll(), HttpStatus.OK);
+        System.out.println("TU SAMMMM");
+
+        return "Kreirana";
 
     }
+
+
+
+
+
 
     @DeleteMapping("/{id}")
     ResponseEntity<?> delete(@PathVariable Integer id) {
@@ -81,4 +111,29 @@ public class PicturesResource {
         return new ResponseEntity<>(message, HttpStatus.OK);
 
     }
+
+
+    @PostMapping("/exist")
+    Boolean PictureByURLExists(@RequestBody final String slika) {
+        System.out.println("EXISTTTTT"+slika);
+        Pictures picture=picturesRepository.findBySlika(slika);
+        System.out.println("SLIKAAAAA"+picture);
+        if(picture==null){
+            return false;
+        }
+        return true;
+    }
+
+    @PostMapping("/picture_id")
+    Integer PictureByURL(@RequestBody final String slika) {
+        System.out.println("PICTUREEEEEE"+slika);
+        Pictures picture=picturesRepository.findBySlika(slika);
+        System.out.println("SLIKAAAAA"+picture.getBroj());
+        if(picture==null){
+            return -1;
+        }
+        System.out.println("BROOOoooJ"+picture);
+        return (picture.getBroj());
+    }
+
 }

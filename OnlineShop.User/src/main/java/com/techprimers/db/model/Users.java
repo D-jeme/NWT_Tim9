@@ -27,7 +27,11 @@ public class Users {
     private String email;
     private String password;
 
-    private String newPassword;
+    @Column(name="newPassword_url")
+    private String newPassword_url;
+
+    @Column(name="profile_image_id")
+    private Integer profile_image_id;
 
 
     @ManyToOne
@@ -85,12 +89,12 @@ public class Users {
         this.password = newpassword;
     }
 
-    public String getNewPassword() {
-        return newPassword;
+    public String getNewPassword_url() {
+        return newPassword_url;
     }
 
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
+    public void setNewPassword_url(String newPassword) {
+        this.newPassword_url = newPassword;
     }
 
     public Roles getRole() {
@@ -99,6 +103,14 @@ public class Users {
 
     public void setRole(Roles role) {
         this.role = role;
+    }
+
+    public Integer getProfile_image_id() {
+        return profile_image_id;
+    }
+
+    public void setProfile_image_id(Integer id) {
+        this.profile_image_id = id;
     }
    /* public Set<Roles> getRoles() {
         return roles;
