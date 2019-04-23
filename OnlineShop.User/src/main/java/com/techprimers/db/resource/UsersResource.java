@@ -38,6 +38,15 @@ public class UsersResource {
     @Autowired
     private RestTemplate restTemplate;
 
+
+    @GetMapping("/exist/{id}")
+    public boolean userExist(@PathVariable Long id) {
+        Users user=usersRepository.findById(id);
+        System.out.println("user"+user);
+        if(user==null)return false;
+        return true;
+    }
+
     @GetMapping("/hello")
     public String getHelloWordObject() {
         String hello=("Pricamooo ");
@@ -181,13 +190,14 @@ public class UsersResource {
         Map<String,Object> message=new HashMap<String, Object>();
         if (usersRepository.findById(id) != null) {
             usersRepository.delete(usersRepository.findById(id));
-
+            restTemplate.delete("http://articles/articles/all/"+id,String.class);
             message.put("MESSAGE", "Deleted user");
             return new ResponseEntity<>(message,HttpStatus.OK);
         }
         message.put("MESSAGE", "User doesn't exist.");
         return new ResponseEntity<>(message,HttpStatus.CONFLICT);
     }
+
 }
 
 

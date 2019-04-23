@@ -1,9 +1,7 @@
 package com.techprimers.db.resource;
 
 import com.techprimers.db.model.Pictures;
-import com.techprimers.db.model.Users;
 import com.techprimers.db.repository.PicturesRepository;
-import com.techprimers.db.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

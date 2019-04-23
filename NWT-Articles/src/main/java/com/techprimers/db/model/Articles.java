@@ -28,6 +28,9 @@ public class Articles {
     private Integer kolicina;
     @Column (name ="popust")
     private Integer popust;
+    @NotNull
+    @Column (name="objavio")
+    private Long objavio;
 
     @NotNull
     @ManyToOne
@@ -36,6 +39,10 @@ public class Articles {
 
     public Articles() {
     }
+
+    public Long getObjavio(){return objavio;}
+
+    public  void setObjavio(){this.objavio=objavio;}
 
     public Integer getBroj() {
         return broj;

@@ -1,26 +1,18 @@
 package com.techprimers.db.resource;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.techprimers.db.model.Articles;
-import com.techprimers.db.model.Users;
 import com.techprimers.db.repository.ArticlesRepository;
-import com.techprimers.db.repository.UsersRepository;
 import com.techprimers.db.services.ArticlesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.ResponseEntity;
-import com.techprimers.db.exceptions.NotFoundException;
 
 import java.util.*;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
-import static jdk.nashorn.internal.objects.Global.undefined;
-import static org.springframework.jdbc.support.JdbcUtils.isNumeric;
 
 
 @RestController
@@ -101,6 +93,10 @@ public class ArticlesResource {
             return new ResponseEntity<>(message, HttpStatus.OK);
 
         }
+        if(!restTemplate.getForObject("http://USERS/rest/users/exist/"+articles.getObjavio(),Boolean.class)){
+            message.put("MESSAGE", "Ne postoji user sa id:"+articles.getObjavio());
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        }
 
         if(articles.getCijena()==0) {
 
@@ -147,6 +143,23 @@ public class ArticlesResource {
 
         message.put("MESSAGE", "Uspjesno obrisan artikal "+id);
          return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+    @DeleteMapping("all/{id}")
+    ResponseEntity<?> deleteUsersArticle(@PathVariable Long id){
+        Collection<Articles> articles=articlesRepository.findAll();
+        System.out.println("duzina"+articles.size());
+        for (Articles article:articles
+        ) {
+            if(article.getObjavio()==id) {
+                articlesRepository.delete(article);
+            }
+
+        }
+        Map<String, Object> message = new HashMap<String, Object>();
+
+
+        message.put("MESSAGE", "Uspjesno obrisani artikli korisnika sa idom:"+id);
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
     @PutMapping("/updateAktivan/{id}")
     public ResponseEntity<?>  izmijeniAktivan(@PathVariable Integer id,@RequestBody final Articles articles){
