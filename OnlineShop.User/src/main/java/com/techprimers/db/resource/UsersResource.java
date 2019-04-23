@@ -69,10 +69,9 @@ public class UsersResource {
 
     @GetMapping(value = "/{id}")
     public Users getUser(@PathVariable Long id){
-
       return usersRepository.findById(id);
-
     }
+
 
    /* @PostMapping(value = "/load")
     public List<Users> persist(@Valid @RequestBody  final Users users, Errors errors) {
@@ -89,26 +88,29 @@ public class UsersResource {
 
     @PostMapping(value = "/")
     public ResponseEntity<Users> createUser(@Valid @RequestBody Users user){
+        System.out.println("IMAAAAAA"+user.getEmail()+user.getRole());
+        System.out.println("OVDJEJEEE"+usersRepository.findByEmail(user.getEmail()));
         Users registeredUser= usersRepository.findByEmail(user.getEmail());
+        System.out.println("REGISTEREEED USEEER"+registeredUser);
         if(registeredUser!=null)  return  new ResponseEntity<Users>(user, HttpStatus.CONFLICT);
-        JSONObject jsonObject=new JSONObject();
-        jsonObject.put("slika",user.getNewPassword_url());
-       // MultiValueMap<String, String> parametersMap = new LinkedMultiValueMap<String, String>();
-       // parametersMap.add("urlslike", user.getNewPassword_url());
-        Boolean pictureexists =  restTemplate.postForObject("http://articles/pictures/exist",user.getNewPassword_url(),Boolean.class);
-        if(pictureexists==true) {
-            Integer picture=restTemplate.postForObject("http://articles/pictures/picture_id",user.getNewPassword_url(), Integer.class);
+        if(user.getNewPassword_url()!=null) {
+            JSONObject jsonObject=new JSONObject();
+            jsonObject.put("slika", user.getNewPassword_url());
+            Boolean pictureexists = restTemplate.postForObject("http://articles/pictures/exist", user.getNewPassword_url(), Boolean.class);
+            if (pictureexists == true) {
+                Integer picture = restTemplate.postForObject("http://articles/pictures/picture_id", user.getNewPassword_url(), Integer.class);
+                user.setNewPassword_url("");
+                user.setProfile_image_id(picture);
+                usersRepository.save(user);
+                return new ResponseEntity<Users>(user, HttpStatus.CREATED);
+            }
+            String re = restTemplate.postForObject("http://articles/pictures/picture", jsonObject, String.class);
+            Integer picture_id = restTemplate.postForObject("http://articles/pictures/picture_id", user.getNewPassword_url(), Integer.class);
             user.setNewPassword_url("");
-            user.setProfile_image_id(picture);
-            usersRepository.save(user);
-            return new ResponseEntity<Users>(user, HttpStatus.CREATED);
+            user.setProfile_image_id(picture_id);
         }
-        String re=restTemplate.postForObject("http://articles/pictures/picture",jsonObject,String.class);
-        Integer picture_id=restTemplate.postForObject("http://articles/pictures/picture_id",user.getNewPassword_url(), Integer.class);
-        user.setNewPassword_url("");
-        user.setProfile_image_id(picture_id);
+        else user.setNewPassword_url("");
         usersRepository.save(user);
-
         return  new ResponseEntity<Users>(user, HttpStatus.OK);
     }
 
@@ -188,9 +190,12 @@ public class UsersResource {
     public ResponseEntity<?> delete(@PathVariable Long id) {
         System.out.println("USEEEEER IIIIIIIIIID" + id);
         Map<String,Object> message=new HashMap<String, Object>();
+        Integer profile_picture_id;
         if (usersRepository.findById(id) != null) {
+            profile_picture_id=usersRepository.findById(id).getProfile_image_id();
             usersRepository.delete(usersRepository.findById(id));
             restTemplate.delete("http://articles/articles/all/"+id,String.class);
+            restTemplate.delete("http://articles/pictures/"+profile_picture_id,String.class);
             message.put("MESSAGE", "Deleted user");
             return new ResponseEntity<>(message,HttpStatus.OK);
         }

@@ -153,14 +153,13 @@ public class ArticlesResource {
             if(article.getObjavio()==id) {
                 articlesRepository.delete(article);
             }
-
         }
         Map<String, Object> message = new HashMap<String, Object>();
-
-
         message.put("MESSAGE", "Uspjesno obrisani artikli korisnika sa idom:"+id);
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
+
+
     @PutMapping("/updateAktivan/{id}")
     public ResponseEntity<?>  izmijeniAktivan(@PathVariable Integer id,@RequestBody final Articles articles){
         Articles article=articlesRepository.findByBroj(id);
