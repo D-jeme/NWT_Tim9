@@ -3,9 +3,13 @@ spring:
     name: USERS
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7282808
-    username: sql7282808
-    password: ZWzWCxQHYf
+   # url: jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7282808
+
+    #username: sql7282808
+    #password: ZWzWCxQHYf
+    url: jdbc:mysql://localhost:3306/users?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password:
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true

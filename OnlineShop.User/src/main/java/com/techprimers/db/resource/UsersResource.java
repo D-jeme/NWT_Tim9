@@ -86,27 +86,19 @@ public class UsersResource {
         jsonObject.put("slika",user.getNewPassword_url());
        // MultiValueMap<String, String> parametersMap = new LinkedMultiValueMap<String, String>();
        // parametersMap.add("urlslike", user.getNewPassword_url());
-        System.out.println("url_slikeEEEEEEEEEEEEEEEEEE"+user.getNewPassword_url());
-        System.out.println("PARAMETAAAARRRRRRRR"+jsonObject);
         Boolean pictureexists =  restTemplate.postForObject("http://articles/pictures/exist",user.getNewPassword_url(),Boolean.class);
-        System.out.println("porukaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+pictureexists);
         if(pictureexists==true) {
-            System.out.println("TRUEEEEEEEE");
             Integer picture=restTemplate.postForObject("http://articles/pictures/picture_id",user.getNewPassword_url(), Integer.class);
-            System.out.println("PICTRUREEEE"+picture);
             user.setNewPassword_url("");
             user.setProfile_image_id(picture);
             usersRepository.save(user);
             return new ResponseEntity<Users>(user, HttpStatus.CREATED);
         }
-        System.out.println("FALSEEEEEEEEEEEE");
         String re=restTemplate.postForObject("http://articles/pictures/picture",jsonObject,String.class);
-        System.out.println("RESPONSEEEEEEE"+re);
         Integer picture_id=restTemplate.postForObject("http://articles/pictures/picture_id",user.getNewPassword_url(), Integer.class);
         user.setNewPassword_url("");
         user.setProfile_image_id(picture_id);
         usersRepository.save(user);
-        System.out.println("IMA LI MEEEEEEEEEEE");
 
         return  new ResponseEntity<Users>(user, HttpStatus.OK);
     }
@@ -119,7 +111,8 @@ public class UsersResource {
         if (loggedInUser != null) {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             System.out.println("NOVIIIIIIIII PSW hashhhhh"+user.getNewPassword_url());
-            System.out.println("Compare 1 " + passwordEncoder.matches(user.getNewPassword_url(), "$2a$10$d1qRDwA0/WGT60dEzf/9D.qbsnzhOd6miM/1SrrclHKbS2zVGF2z6"));
+            System.out.println("Compare 1 " + passwordEncoder.matches(user.getNewPassword_url(), "$2a$10$.pWex2THB4/o4EuO1HW84eYQI63cLZW0.ppt3TWgsjt1Mroh3PX1S"));
+            System.out.println("PSWWWWWWWWWWW"+loggedInUser.getPassword());
             if (passwordEncoder.matches(user.getNewPassword_url(), loggedInUser.getPassword())) {
                 message.put("MESSAGE", "Korisnik je ulogovan uspješno");
                 return new ResponseEntity<>(message,HttpStatus.OK);
@@ -127,7 +120,7 @@ public class UsersResource {
             message.put("MESSAGE", "Email ili password su pogrešno uneseni.");
             return new ResponseEntity<>(message,HttpStatus.CONFLICT);
         }
-        message.put("MESSAGE", "Email ili password su pogrešno uneseni.");
+        message.put("MESSAGE", "Email ili password su pogrešno unesenii.");
         return new ResponseEntity<>(message,HttpStatus.CONFLICT);
     }
 
@@ -139,11 +132,36 @@ public class UsersResource {
             message.put("MESSAGE", "User doesn't exist.");
             return new ResponseEntity<>(message,HttpStatus.CONFLICT);
         }
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("slika",user.getNewPassword_url());
         existing.setIme(user.getIme());
         existing.setPrezime(user.getPrezime());
         System.out.println("USERR PSW"+user.getPassword());
-        existing.setPassword(user.getPassword());
+        String psw=user.getNewPassword();
+        existing.setPassword(user.getNewPassword());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        System.out.println("EXISTIIING"+existing.getPassword());
+        System.out.println("Compare 1 " + passwordEncoder.matches(user.getNewPassword(), existing.getPassword()));
+        System.out.println("PSWWW"+existing.getPassword());
+        Boolean pictureexists =  restTemplate.postForObject("http://articles/pictures/exist",user.getNewPassword_url(),Boolean.class);
         //user.setRole(existing.getRole());
+        System.out.println("porukaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+pictureexists);
+        if(pictureexists==true) {
+            System.out.println("TRUEEEEEEEE");
+            Integer picture=restTemplate.postForObject("http://articles/pictures/picture_id",user.getNewPassword_url(), Integer.class);
+            System.out.println("PICTRUREEEE"+picture);
+            existing.setNewPassword_url("");
+            existing.setProfile_image_id(picture);
+            usersRepository.save(existing);
+            message.put("MESSAGE", "Updated user.");
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        }
+        System.out.println("FALSEEEEEEEEEEEE");
+        String re=restTemplate.postForObject("http://articles/pictures/picture",jsonObject,String.class);
+        System.out.println("RESPONSEEEEEEE"+re);
+        Integer picture_id=restTemplate.postForObject("http://articles/pictures/picture_id",user.getNewPassword_url(), Integer.class);
+        existing.setNewPassword_url("");
+        existing.setProfile_image_id(picture_id);
         usersRepository.save(existing);
         message.put("MESSAGE", "Updated user.");
         return new ResponseEntity<>(message,HttpStatus.OK);

@@ -33,6 +33,10 @@ public class Users {
     @Column(name="profile_image_id")
     private Integer profile_image_id;
 
+    @Column(name="newPassword")
+    private String newPassword;
+
+
 
     @ManyToOne
     @JoinColumn(name = "role_id")
@@ -95,6 +99,14 @@ public class Users {
 
     public void setNewPassword_url(String newPassword) {
         this.newPassword_url = newPassword;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 
     public Roles getRole() {

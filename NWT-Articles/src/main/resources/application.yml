@@ -3,9 +3,12 @@ spring:
     name: articles
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7286303
-    username: sql7286303
-    password: sn67y9rl1x
+    #url: jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7286303
+    #username: sql7286303
+    #password: sn67y9rl1x
+    url: jdbc:mysql://localhost:3306/articles?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password:
   rabbitmq:
     host: localhost
     port: 5672

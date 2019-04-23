@@ -11,6 +11,7 @@ public class SpringBootMysqldbApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
 	}
 
 }
