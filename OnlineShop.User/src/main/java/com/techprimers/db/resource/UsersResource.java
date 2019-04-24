@@ -3,6 +3,7 @@ package com.techprimers.db.resource;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.techprimers.db.model.Users;
 import com.techprimers.db.repository.UsersRepository;
+import com.techprimers.db.services.UserEventHandler;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -38,6 +39,8 @@ public class UsersResource {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    UserEventHandler userEventHandler;
 
     @GetMapping("/exist/{id}")
     public boolean userExist(@PathVariable Long id) {
@@ -69,7 +72,8 @@ public class UsersResource {
 
     @GetMapping(value = "/{id}")
     public Users getUser(@PathVariable Long id){
-      return usersRepository.findById(id);
+      userEventHandler.handleAfterCreated( usersRepository.findById(id));
+        return usersRepository.findById(id);
     }
 
 
@@ -95,8 +99,11 @@ public class UsersResource {
         if(registeredUser!=null)  return  new ResponseEntity<Users>(user, HttpStatus.CONFLICT);
         if(user.getNewPassword_url()!=null) {
             JSONObject jsonObject=new JSONObject();
+            System.out.println("1111111111111111111");
             jsonObject.put("slika", user.getNewPassword_url());
             Boolean pictureexists = restTemplate.postForObject("http://articles/pictures/exist", user.getNewPassword_url(), Boolean.class);
+
+            System.out.println("2222222222");
             if (pictureexists == true) {
                 Integer picture = restTemplate.postForObject("http://articles/pictures/picture_id", user.getNewPassword_url(), Integer.class);
                 user.setNewPassword_url("");
@@ -191,12 +198,14 @@ public class UsersResource {
         System.out.println("USEEEEER IIIIIIIIIID" + id);
         Map<String,Object> message=new HashMap<String, Object>();
         Integer profile_picture_id;
+        userEventHandler.handleAfterCreated(usersRepository.findById(id));
         if (usersRepository.findById(id) != null) {
             profile_picture_id=usersRepository.findById(id).getProfile_image_id();
             usersRepository.delete(usersRepository.findById(id));
             restTemplate.delete("http://articles/articles/all/"+id,String.class);
             restTemplate.delete("http://articles/pictures/"+profile_picture_id,String.class);
             message.put("MESSAGE", "Deleted user");
+
             return new ResponseEntity<>(message,HttpStatus.OK);
         }
         message.put("MESSAGE", "User doesn't exist.");
