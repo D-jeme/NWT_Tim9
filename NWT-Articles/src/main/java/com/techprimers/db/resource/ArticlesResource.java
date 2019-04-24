@@ -2,6 +2,7 @@ package com.techprimers.db.resource;
 
 import com.techprimers.db.model.Articles;
 import com.techprimers.db.repository.ArticlesRepository;
+import com.techprimers.db.services.ArticleEventHandler;
 import com.techprimers.db.services.ArticlesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -26,7 +27,8 @@ public class ArticlesResource {
     @LoadBalanced
     @Autowired
     private RestTemplate restTemplate;
-
+    @Autowired
+    ArticleEventHandler articleEventHandler;
 
 
     @GetMapping(value = "/1")
@@ -138,7 +140,7 @@ public class ArticlesResource {
             message.put("MESSAGE", "Ne postoji artikal u bazi sa id "+id);
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
-
+        articleEventHandler.handleAfterCreated(String.valueOf(id));
         articlesRepository.delete(article);
 
         message.put("MESSAGE", "Uspjesno obrisan artikal "+id);
