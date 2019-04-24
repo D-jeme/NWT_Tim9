@@ -173,6 +173,7 @@ public class ArticlesResource {
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
         article.setAktivan(articles.getAktivan());
+        articleEventHandler.handleAfterUpdated(String.valueOf(id));
         return new ResponseEntity<Articles>(articlesRepository.save(article), HttpStatus.OK);
 
     }

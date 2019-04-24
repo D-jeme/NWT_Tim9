@@ -34,6 +34,12 @@ public class ArticleEventHandler {
         rabbitTemplate.convertAndSend(userCreatedQueue.getName(), id);
     }
 
+    @HandleAfterCreate
+    public void handleAfterUpdated(String id) {
+
+        rabbitTemplate.convertAndSend(userCreatedQueue.getName(), id);
+    }
+
     private String serializeToJson(String id) {
         ObjectMapper mapper = new ObjectMapper();
         String jsonInString = "";
