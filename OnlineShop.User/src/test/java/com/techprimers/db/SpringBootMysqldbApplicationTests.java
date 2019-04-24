@@ -50,11 +50,11 @@ public class SpringBootMysqldbApplicationTests {
 		String baseUrl = "http://localhost:" + randomServerPort + "/rest/users/";
 		URI uri = new URI(baseUrl);
 		JSONObject jsonObject=new JSONObject();
-		jsonObject.put("ime", "test12");
+		jsonObject.put("ime", "test1232");
 		jsonObject.put("prezime", "test12");
-		jsonObject.put("email", "test12@gmail.com");
+		jsonObject.put("email", "test1762@gmail.com");
 		jsonObject.put("password", "test12");
-		jsonObject.put("newPassword_url", "https://i.redd.it/5el0ahv4l5hjkfz.jpg");
+		jsonObject.put("newPassword_url", "https://i.redd.it/5el0ah4l5hjkfz.jpg");
 		JSONObject role=new JSONObject();
 		role.put("id","1");
 		role.put("tip","admin");
@@ -73,7 +73,7 @@ public class SpringBootMysqldbApplicationTests {
 		ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
 		//Verify request succeed
 		Assert.assertEquals(200, result.getStatusCodeValue());
-		Assert.assertEquals(true, result.getBody().contains("test12@gmail.com"));
+		Assert.assertEquals(true, result.getBody().contains("emir@gmail.com"));
 	}
 
 	@Test
