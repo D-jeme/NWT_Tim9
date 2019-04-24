@@ -2,6 +2,8 @@ package com.techprimers.db;
 
 import com.techprimers.db.model.Users;
 import net.minidev.json.JSONObject;
+import org.codehaus.jettison.json.JSONStringer;
+import org.codehaus.jettison.json.JSONTokener;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,32 +41,100 @@ public class SpringBootMysqldbApplicationTests {
 		Assert.assertEquals(true, result.getBody().contains("ime"));
 	}
 
+
+	//CREATING NEW USER
+
 	@Test
 	public void createUserTest()  throws URISyntaxException {
 		RestTemplate restTemplate = new RestTemplate();
-
-		final String baseUrl = "http://localhost:" + randomServerPort + "/rest/users/";
+		String baseUrl = "http://localhost:" + randomServerPort + "/rest/users/";
 		URI uri = new URI(baseUrl);
 		JSONObject jsonObject=new JSONObject();
-		jsonObject.put("ime", "aaa14");
-		jsonObject.put("prezime", "aaa14");
-		jsonObject.put("email", "aaa14@gmail.com");
-		jsonObject.put("password", "aaa13");
-		jsonObject.put("newPassword_url", "https://ttt.usnews.com/static-travel/images/destinations/61/2016-main-getty.jpg");
-		jsonObject.put("password", "aaa13");
-		jsonObject.put("password", "aaa13");
+		jsonObject.put("ime", "test12");
+		jsonObject.put("prezime", "test12");
+		jsonObject.put("email", "test12@gmail.com");
+		jsonObject.put("password", "test12");
+		jsonObject.put("newPassword_url", "https://i.redd.it/5el0ahv4l5hjkfz.jpg");
 		JSONObject role=new JSONObject();
 		role.put("id","1");
 		role.put("tip","admin");
 		jsonObject.put("role",role);
-		System.out.println("OBJEKAAAT"+jsonObject);
+
 		ResponseEntity<String> result = restTemplate.postForEntity(uri, jsonObject, String.class);
-		System.out.println("rezulat ej "+result.getBody());
-		System.out.println("REZULTAAAT"+result.getStatusCodeValue());
 		//Verify request succeed
 		Assert.assertEquals(200, result.getStatusCodeValue());
-		//Assert.assertEquals(true, result.getBody().contains("ime"));
 	}
+
+	@Test
+	public void UserCreatedTest()  throws URISyntaxException {
+		RestTemplate restTemplate = new RestTemplate();
+		String baseUrl = "http://localhost:" + randomServerPort + "/rest/users/";
+		URI uri = new URI(baseUrl);
+		ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
+		//Verify request succeed
+		Assert.assertEquals(200, result.getStatusCodeValue());
+		Assert.assertEquals(true, result.getBody().contains("test12@gmail.com"));
+	}
+
+	@Test
+	public void UserProfilePictureIsAddedInPicturesTableTest()  throws URISyntaxException {
+		RestTemplate restTemplate = new RestTemplate();
+		String baseUrl = "http://localhost:8082/pictures/";
+		URI uri = new URI(baseUrl);
+		ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
+		//Verify request succeed
+		Assert.assertEquals(200, result.getStatusCodeValue());
+		System.out.println("TIJELOO"+result.getBody());
+		Assert.assertEquals(true, result.getBody().contains("https://i.redd.it/5el0ahv4l5hjkfz.jpg"));
+	}
+
+	/*@Test
+	public void createExistingUserTest()  throws URISyntaxException {
+		RestTemplate restTemplate = new RestTemplate();
+		String baseUrl = "http://localhost:" + randomServerPort + "/rest/users/";
+		URI uri = new URI(baseUrl);
+		JSONObject jsonObject=new JSONObject();
+		jsonObject.put("ime", "");
+		jsonObject.put("prezime", "test12");
+		jsonObject.put("email", "test12@gmail.com");
+		jsonObject.put("password", "test12");
+		jsonObject.put("newPassword_url", "https://i.redd.it/5el0ahv4l5hjkfz.jpg");
+		JSONObject role=new JSONObject();
+		role.put("id","1");
+		role.put("tip","admin");
+		jsonObject.put("role",role);
+
+		ResponseEntity<String> result = restTemplate.postForEntity(uri, jsonObject, String.class);
+		//Verify request succeed
+		System.out.println("KOOOOOD"+result.getStatusCodeValue());
+		Assert.
+		Assert.assertEquals(400, result.getStatusCodeValue());
+	}*/
+
+
+	//UPDATE USER
+/*	@Test
+	public void UpdateUserTest()  throws URISyntaxException {
+		RestTemplate restTemplate = new RestTemplate();
+		String baseUrl = "http://localhost:" + randomServerPort + "/rest/users/5";
+		URI uri = new URI(baseUrl);
+		JSONObject jsonObject=new JSONObject();
+		jsonObject.put("ime", "updatetest12");
+		jsonObject.put("prezime", "updatetest12");
+		jsonObject.put("email", "updatetest12@gmail.com");
+		jsonObject.put("password", "udpdatetest12");
+		jsonObject.put("newPassword_url", "https://i.updateredd.it/5el0ahv4l5hjkfz.jpg");
+		JSONObject role=new JSONObject();
+		role.put("id","1");
+		role.put("tip","admin");
+		jsonObject.put("role",role);
+
+		ResponseEntity<String> result = restTemplate.p .put(uri,jsonObject,String.class);
+		//Verify request succeed
+		Assert.assertEquals(200, result.getStatusCodeValue());
+	}
+*/
+
 
 	@Test
 	public void createRole()  throws URISyntaxException {
@@ -80,6 +150,8 @@ public class SpringBootMysqldbApplicationTests {
 		Assert.assertEquals(200, result.getStatusCodeValue());
 		//Assert.assertEquals(true, result.getBody().contains("ime"));
 	}
+
+
 
 
 }
