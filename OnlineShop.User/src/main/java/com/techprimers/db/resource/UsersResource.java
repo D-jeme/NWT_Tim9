@@ -87,12 +87,15 @@ public class UsersResource {
     }*/
 
     @PostMapping(value = "/")
-    public ResponseEntity<Users> createUser(@Valid @RequestBody Users user){
+    public ResponseEntity<?> createUser(@Valid @RequestBody Users user){
         System.out.println("IMAAAAAA"+user.getEmail()+user.getRole());
         System.out.println("OVDJEJEEE"+usersRepository.findByEmail(user.getEmail()));
+        Map<String,Object> message=new HashMap<String, Object>();
         Users registeredUser= usersRepository.findByEmail(user.getEmail());
         System.out.println("REGISTEREEED USEEER"+registeredUser);
-        if(registeredUser!=null)  return  new ResponseEntity<Users>(user, HttpStatus.CONFLICT);
+        if(registeredUser!=null) {
+            message.put("MESSAGE", "USer already exists");
+            return  new ResponseEntity<Users>(user, HttpStatus.FOUND);}
         if(user.getNewPassword_url()!=null) {
             JSONObject jsonObject=new JSONObject();
             jsonObject.put("slika", user.getNewPassword_url());
@@ -102,7 +105,9 @@ public class UsersResource {
                 user.setNewPassword_url("");
                 user.setProfile_image_id(picture);
                 usersRepository.save(user);
-                return new ResponseEntity<Users>(user, HttpStatus.CREATED);
+                message.put("MESSAGE", "Profile picture already exists. USer is created.");
+                return new ResponseEntity<>(message,HttpStatus.CREATED);
+               // return new ResponseEntity<Users>(user, HttpStatus.CREATED);
             }
             String re = restTemplate.postForObject("http://articles/pictures/picture", jsonObject, String.class);
             Integer picture_id = restTemplate.postForObject("http://articles/pictures/picture_id", user.getNewPassword_url(), Integer.class);
@@ -111,7 +116,9 @@ public class UsersResource {
         }
         else user.setNewPassword_url("");
         usersRepository.save(user);
-        return  new ResponseEntity<Users>(user, HttpStatus.OK);
+        message.put("MESSAGE", "User is successfully created");
+        return new ResponseEntity<>(message,HttpStatus.OK);
+        //return  new ResponseEntity<Users>(user, HttpStatus.OK);
     }
 
     @PostMapping(value = "/login")
