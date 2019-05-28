@@ -1,0 +1,77 @@
+version: '3'
+services:
+  eureka-server:
+    container_name: eureka-server
+    build:
+      context: eureka-server
+      dockerfile: Dockerfile
+    image: eureka-server:0.0.1-SNAPSHOT
+    expose:
+      - 8761
+    ports:
+      - 8761:8761
+    networks:
+      - emp-network
+  articles:
+    container_name: articles
+    build:
+      context: articles
+      dockerfile: Dockerfile
+      args:
+        dburl: 'jdbc:mysql://localhost:3306/articles?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC'
+        dbuser: 'root'
+        dbpass: ''
+        rabbithost: '10.0.75.1'
+    image: user-management:0.0.1-SNAPSHOT
+    entrypoint: /opt/UserManagement-entrypoint.sh
+    expose:
+      - 8082
+    ports:
+      - 8082:8082
+    networks:
+      - emp-network
+    links:
+      - eureka-server:eureka-server
+    depends_on:
+      - eureka-server
+  USERS:
+    container_name: USERS
+    build:
+      context: USERS
+      dockerfile: Dockerfile
+      args:
+        dburl: 'jdbc:mysql://localhost:3306/users?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC'
+        dbuser: 'root'
+        dbpass: ''
+        rabbithost: '10.0.75.1'
+    image: location-transport:0.0.1-SNAPSHOT
+    entrypoint: /opt/LocationTransport-entrypoint.sh
+    expose:
+      - 8081
+    ports:
+      - 8081:8081
+    networks:
+      - emp-network
+    links:
+      - eureka-server:eureka-server
+    depends_on:
+      - eureka-server
+  gateway:
+    container_name: gateway
+    build:
+      context: gateway
+      dockerfile: Dockerfile
+    image: api-gateway:0.0.1-SNAPSHOT
+    expose:
+      - 8084
+    ports:
+      - 8084:8084
+    networks:
+      - emp-network
+    links:
+      - eureka-server:eureka-server
+    depends_on:
+      - eureka-server
+networks:
+  emp-network:
+    driver: bridge

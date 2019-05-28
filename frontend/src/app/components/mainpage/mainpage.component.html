@@ -1,0 +1,24 @@
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul></ul>
+      <ul class="nav navbar-nav navbar-center">
+            <li><a (click)="getArticles()"><img src="https://i.ibb.co/C8RdHfB/logo.png" alt="logo" border="0" align="center"></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#"><i class="material-icons" style="font-size:40px;color:teal">shopping_cart</i></a>
+            <a href="#"><i class="material-icons" style="font-size:40px;color:teal" (click)="openLogin()">account_circle</i></a>
+        </li>
+      </ul>
+  </div>
+</nav>
+<h3>Svi artikli</h3>
+<div *ngFor="let artikal of artikli">
+
+
+<i>{{artikal.naziv}}</i>
+<i>{{artikal.kratki_tekst}}</i>
+
+
+</div>

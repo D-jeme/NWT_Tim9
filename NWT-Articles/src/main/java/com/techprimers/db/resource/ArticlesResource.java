@@ -6,6 +6,7 @@ import com.techprimers.db.services.ArticleEventHandler;
 import com.techprimers.db.services.ArticlesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "/articles")
 public class ArticlesResource {
 
@@ -53,15 +55,21 @@ public class ArticlesResource {
         return hello;
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(value = "/")
     public ResponseEntity<?> getAll() {
-        System.out.println("imal me");
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+        responseHeaders.set("Access-Control-Allow-Headers", "Content-Type");
+        System.out.println("imal me"+responseHeaders);
+
         Collection<Articles> articles = this.articlesRepository.findAll();
         if(articles.isEmpty())
         {Map<String, Object> message = new HashMap<String, Object>();
 
             message.put("MESSAGE", "Nema artikala u bazi");
-            return new ResponseEntity<>(message, HttpStatus.OK);
+            return new ResponseEntity<>(message,responseHeaders, HttpStatus.OK);
         }
         return new ResponseEntity<Collection<Articles>>(articles, HttpStatus.OK);
     }
