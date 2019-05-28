@@ -24,6 +24,7 @@ import { MainpictureComponent } from './components/mainpicture/mainpicture.compo
 
 
 import { MainpageComponent } from './components/mainpage/mainpage.component';
+import { RegistracijaComponent } from './components/registracija/registracija.component';
 
 
 
@@ -36,12 +37,10 @@ import { MainpageComponent } from './components/mainpage/mainpage.component';
 
     AppComponent,
 
-
-
     MainpictureComponent,
 
-
     MainpageComponent,
+    RegistracijaComponent
 
 ],
 

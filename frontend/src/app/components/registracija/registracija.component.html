@@ -1,0 +1,32 @@
+<!--><div class="elektrijada">
+<div class="form-content">
+<div>
+  <h2>REGISTRACIJA</h2>
+  <fieldset class="groupBox">
+  <input type="text" [(ngModel)]="ime" name="ime" placeholder="Ime" required>
+  <input type="text" [(ngModel)]="prezime" name="prezime" placeholder="Prezime" required>
+  <input type="text" [(ngModel)]="email" name="email" placeholder="Email" required>
+</fieldset>
+  <fieldset class="groupBox" style="margin-top:5px;">
+  <input type="text" [(ngModel)]="url_slike" name="url_slike" placeholder="URL profilne slike" required>
+  <input type="text" [(ngModel)]="password" name="password" placeholder="password" required>
+  <input type="text" [(ngModel)]="password2" name="password" placeholder="Potvrdi password" required>
+</fieldset>
+
+  <div class="error" *ngIf="errorMessage!=''">{{errorMessage}}</div>
+  <div class="poruka" *ngIf="messageUspjesno!=''">{{messageUspjesno}}</div>
+  <button (click)="print()">Registruj se</button>
+</div>
+</div>
+</div><-->
+
+<div class="elektrijada">
+<div class="form-content">
+<div>
+  <h2>SVI KORISNICI</h2>
+  <fieldset class="groupBox" *ngFor="let korisnik of korisnici">
+  <p>{{korisnik.ime}}</p><p>{{korisnik.prezime}}</p><p>{{korisnik.email}}</p>
+  </fieldset>
+</div>
+</div>
+</div>
