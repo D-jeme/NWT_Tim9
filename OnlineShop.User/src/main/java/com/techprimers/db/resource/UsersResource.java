@@ -64,8 +64,8 @@ public class UsersResource {
         System.out.println("poruka"+str);
         return new ResponseEntity<String>(str, HttpStatus.OK);
     }
-
-        @GetMapping(value = "/")
+    @CrossOrigin(origins="*")
+    @GetMapping(value = "/")
     public List<Users> getAll() {
         return usersRepository.findAll();
     }
@@ -90,6 +90,7 @@ public class UsersResource {
         return  new ResponseEntity<Users>(user, HttpStatus.OK);
     }*/
 
+    @CrossOrigin(origins="*")
     @PostMapping(value = "/")
     public ResponseEntity<?> createUser(@Valid @RequestBody Users user){
         System.out.println("IMAAAAAA"+user.getEmail()+user.getRole());

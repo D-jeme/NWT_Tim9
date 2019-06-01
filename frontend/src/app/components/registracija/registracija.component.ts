@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/users.service';
+import { RegistracijaService } from '../../services/registracija.service';
 import { Osoba } from '../../models/osoba';
 @Component({
   templateUrl: './registracija.component.html',
   styleUrls: ['./registracija.component.css'],
-  providers: [UserService],
+  providers: [UserService, RegistracijaService],
 })
 export class RegistracijaComponent implements OnInit {
 
   korisnici:Array<any>
-/*
+
   ime: String='';
   prezime: String='';
   email: String='';
@@ -19,11 +20,11 @@ export class RegistracijaComponent implements OnInit {
   errorMessage: String='';
   messageUspjesno: String='';
     novi: Osoba;
-*/
+
 /*  constructor(private _registracijaService: RegistracijaService) {
 }*/
 
-constructor(private _userService: UserService) {
+constructor(private _userService: UserService, private _registracijaService: RegistracijaService) {
   this.korisnici=[];
  }
 
@@ -43,7 +44,7 @@ constructor(private _userService: UserService) {
       console.log("ovi su podaci",this.korisnici);
     })
   }
-  /*print() {
+  print() {
       if(this.ime=='' || this.prezime=='' || this.email=='' || this.password=='')
       {
         this.errorMessage='Molimo popunite sva polja!';
@@ -60,7 +61,7 @@ constructor(private _userService: UserService) {
       this._registracijaService.prijava(this.novi);
       this.errorMessage='';
       this.messageUspjesno='Uspjesno!';
-    }*/
+    }
 
 
     /*this.errorMessage='';
