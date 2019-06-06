@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ccd0633-1aeb-4864-85a7-bb2b514523e6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../NWT-Articles/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../NWT-Articles/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OnlineShop.User/src/main/java/com/techprimers/db/model/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OnlineShop.User/src/main/java/com/techprimers/db/model/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OnlineShop.User/src/main/java/com/techprimers/db/resource/UsersResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OnlineShop.User/src/main/java/com/techprimers/db/resource/UsersResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OnlineShop.User/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../OnlineShop.User/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1ccd0633-1aeb-4864-85a7-bb2b514523e6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +31,15 @@
       </usages-collector>
     </session>
     <session id="792752455">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="-516366902">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="1" />
@@ -100,7 +102,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+    <option name="x" value="-10" />
     <option name="width" value="1455" />
     <option name="height" value="1025" />
   </component>
@@ -110,6 +112,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -198,11 +201,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Payment" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../OnlineShop.User" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -232,7 +234,7 @@
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21998659" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22334003" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -264,6 +266,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Payment/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Payment/src/main/java/com/techprimers/db/resource/KarticeResource.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -274,9 +279,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Payment/src/main/java/com/techprimers/db/resource/UsersResource.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Payment/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Payment/src/main/java/com/techprimers/db/SpringBootMysqldbApplication.java">
