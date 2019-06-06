@@ -5,11 +5,7 @@ import { Osoba } from '../../models/osoba';
 @Component({
   templateUrl: './registracija.component.html',
   styleUrls: ['./registracija.component.css'],
-<<<<<<< HEAD
   providers: [UserService,RegistracijaService],
-=======
-  providers: [UserService, RegistracijaService],
->>>>>>> 18fb8284c514a004efe5b145325f277d13396225
 })
 export class RegistracijaComponent implements OnInit {
 
@@ -28,12 +24,8 @@ export class RegistracijaComponent implements OnInit {
 /*  constructor(private _registracijaService: RegistracijaService) {
 }*/
 
-<<<<<<< HEAD
 constructor(private _userService: UserService,private _registracijaService:RegistracijaService) {
 
-=======
-constructor(private _userService: UserService, private _registracijaService: RegistracijaService) {
->>>>>>> 18fb8284c514a004efe5b145325f277d13396225
   this.korisnici=[];
  }
 

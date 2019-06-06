@@ -15,20 +15,13 @@ export class RegistracijaService {
   }
 
   prijava(clan: Osoba) {
-<<<<<<< HEAD
-    console.log("ima li te ",);
-=======
-    console.log("ima li te ");
->>>>>>> 18fb8284c514a004efe5b145325f277d13396225
+
     var body = JSON.stringify(clan);
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
-<<<<<<< HEAD
-console.log("body",body);
-=======
+
 console.log(body);
->>>>>>> 18fb8284c514a004efe5b145325f277d13396225
     this._http.post(this.url + '/rest/users/',
     body,
       {
