@@ -21,6 +21,11 @@ public class Pictures {
 
 
     public Pictures() {
+
+    }
+
+    public Pictures(String slika) {
+        this.setSlika(slika);
     }
 
     public Integer getBroj() {

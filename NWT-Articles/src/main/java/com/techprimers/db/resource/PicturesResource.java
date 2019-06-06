@@ -15,17 +15,21 @@ import java.util.Map;
 import static org.springframework.core.io.support.ResourcePatternUtils.isUrl;
 
 @RestController
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "/pictures")
 public class PicturesResource {
 
     @Autowired
     PicturesRepository picturesRepository;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(value = "/")
     public List<Pictures> getAll() {
         return picturesRepository.findAll();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
    @GetMapping(value = "/{id}")
     public ResponseEntity<?> getArtical(@PathVariable Integer id) {
 
@@ -132,6 +136,19 @@ public class PicturesResource {
         }
         System.out.println("BROOOoooJ"+picture);
         return (picture.getBroj());
+    }
+
+    @PostMapping("/picture_id1")
+    Integer PictureByURL1(@RequestBody final String slika) {
+        Pictures pic=new Pictures(slika);
+       Pictures pic2= picturesRepository.save(pic);
+        System.out.println("PICTUREEEEEE"+pic2);
+        System.out.println("SLIKAAAAA"+pic2.getBroj());
+        if(pic2==null){
+            return -1;
+        }
+        System.out.println("BROOOoooJ"+pic2);
+        return (pic2.getBroj());
     }
 
 }

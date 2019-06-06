@@ -5,7 +5,7 @@ import { Router} from '@angular/router';
 
 @Injectable()
 export class UserService{
-  url:string="http://localhost:8084/users/rest/users/";
+  url:string="http://localhost:8084/users/rest/users";
 
   constructor(private _http:Http){}
 

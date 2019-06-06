@@ -31,6 +31,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/rest/users")
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsersResource {
 
     @Autowired
@@ -65,6 +67,7 @@ public class UsersResource {
         return new ResponseEntity<String>(str, HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
         @GetMapping(value = "/")
     public List<Users> getAll() {
         return usersRepository.findAll();
@@ -90,13 +93,12 @@ public class UsersResource {
         return  new ResponseEntity<Users>(user, HttpStatus.OK);
     }*/
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping(value = "/")
     public ResponseEntity<?> createUser(@Valid @RequestBody Users user){
-        System.out.println("IMAAAAAA"+user.getEmail()+user.getRole());
-        System.out.println("OVDJEJEEE"+usersRepository.findByEmail(user.getEmail()));
+        System.out.println("Novi korisnik"+user.getIme());
         Map<String,Object> message=new HashMap<String, Object>();
         Users registeredUser= usersRepository.findByEmail(user.getEmail());
-        System.out.println("REGISTEREEED USEEER"+registeredUser);
         if(registeredUser!=null) {
             message.put("MESSAGE", "USer already exists");
             return  new ResponseEntity<Users>(user, HttpStatus.FOUND);}
@@ -127,6 +129,8 @@ public class UsersResource {
         return new ResponseEntity<>(message,HttpStatus.OK);
         //return  new ResponseEntity<Users>(user, HttpStatus.OK);
     }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
 
     @PostMapping(value = "/login")
     public ResponseEntity<?> login(@RequestBody Users user) {

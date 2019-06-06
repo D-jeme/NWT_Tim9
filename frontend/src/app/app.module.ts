@@ -23,6 +23,7 @@ import { AppComponent } from './app.component';
 import { MainpictureComponent } from './components/mainpicture/mainpicture.component';
 
 
+import { DodajslikuComponent } from './components/dodajsliku/dodajsliku.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { RegistracijaComponent } from './components/registracija/registracija.component';
 
@@ -36,7 +37,7 @@ import { RegistracijaComponent } from './components/registracija/registracija.co
   declarations: [
 
     AppComponent,
-
+DodajslikuComponent,
     MainpictureComponent,
 
     MainpageComponent,

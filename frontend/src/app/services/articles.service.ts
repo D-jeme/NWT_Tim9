@@ -24,5 +24,30 @@ export class ArticlesService{
       } );
   }
 
+  addArticle(name:String,kratki_tekst:String,dugi_tekst:String,cijena:Number,kolicina:Number,popust:Number,objavio:Number=1,slika:String){
+
+    var body = JSON.stringify({"naziv":name,kratki_tekst,dugi_tekst,cijena,kolicina,popust,"objavio":1,"pictures":{"broj":1,slika}});
+
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
+console.log("body",body);
+    this._http.post(this.url + '/',
+    body,
+      {
+        headers: headers
+      }
+    ).map(res=> res.json()).subscribe(
+      data => {
+          console.log(data);
+
+        },
+    error =>{
+      console.log(error);
+    }
+
+    );
+  }
+
 
 }

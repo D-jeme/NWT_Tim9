@@ -13,7 +13,22 @@
       </ul>
   </div>
 </nav>
-<h3>Svi artikli</h3>
+<div  class="vijesti-screen">
+<figure  *ngFor="let artikal of artikli" class="vijest">
+  <img src={{artikal.pictures.slika}} class="imgs" >
+  <div class="datum"><span class="dan">12</span></div>
+  <figcaption>
+    <div class="naslov">
+    <h3>{{artikal.naziv}}</h3>
+    <span class="cijena">{{artikal.cijena}}</span></div>
+    <p> {{artikal.kratki_tekst}} </p>
+    <button>Procitaj vise</button>
+  </figcaption><a href="#"></a>
+</figure>
+
+
+
+<!--><h3>Svi artikli</h3>
 <div *ngFor="let artikal of artikli">
 
 
@@ -21,4 +36,4 @@
 <i>{{artikal.kratki_tekst}}</i>
 
 
-</div>
+</div><-->

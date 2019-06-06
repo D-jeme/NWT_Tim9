@@ -108,6 +108,8 @@ public class ArticlesResource {
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
 
+
+
         if(articles.getCijena()==0) {
 
             message.put("MESSAGE", "Polje cijena mora biti vece do nule ");
@@ -135,6 +137,12 @@ public class ArticlesResource {
             message.put("MESSAGE", "Polje naziv mora biti popunjeno");
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
+
+        Integer picture = restTemplate.postForObject("http://articles/pictures/picture_id1", articles.getPictures().getSlika(), Integer.class);
+
+        articles.getPictures().setBroj(picture);
+
+
         articlesRepository.save(articles);
         return new ResponseEntity<Collection<Articles>>(this.articlesRepository.findAll(), HttpStatus.OK);
     }

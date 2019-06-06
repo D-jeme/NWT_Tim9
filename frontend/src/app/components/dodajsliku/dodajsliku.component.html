@@ -1,0 +1,42 @@
+<div class="elektrijada">
+<div class="form-content">
+<div>
+  <h2>REGISTRACIJA</h2>
+  <fieldset class="groupBox">
+  <input type="text" [(ngModel)]="name" name="name" placeholder="Name" required>
+  <input type="text" [(ngModel)]="kratki_tekst" name="kratki_tekst" placeholder="Kratki tekst" required>
+  <input type="text" [(ngModel)]="dugi_tekst" name="dugi_tekst" placeholder="Dugi tekst" required>
+</fieldset>
+  <fieldset class="groupBox" style="margin-top:5px;">
+  <input type="text" [(ngModel)]="cijena" name="cijena" placeholder="Cijena slike" required>
+  <input type="text" [(ngModel)]="kolicina" name="kolicina" placeholder="Kolicina" required>
+
+  <input type="text" [(ngModel)]="popust" name="popust" placeholder="Popust" required>
+  <input type="file"  ng2FileSelect [uploader]="uploader" accept="image/*"  multiple/><br/>
+        <button id="upl" (click)="upload()">Upload</button>
+
+        <!--<cl-image  [public-id]="imageId" [cloud-name]="uploader.cloudName"></cl-image>-->
+
+        <div class="loader ">
+          <svg version="1.1" id="loader-1" x="0px" y="0px"
+             width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+          <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+            <animateTransform attributeType="xml"
+              attributeName="transform"
+              type="rotate"
+              from="0 25 25"
+              to="360 25 25"
+              dur="0.6s"
+              repeatCount="indefinite"/>
+            </path>
+          </svg>
+        </div>
+  <popup (confirmClick)="YourCancelEvent()" >Uspjesno ste dodali Album </popup>
+</fieldset>
+
+  <div class="error" *ngIf="errorMessage!=''">{{errorMessage}}</div>
+  <div class="poruka" *ngIf="messageUspjesno!=''">{{messageUspjesno}}</div>
+  <button (click)="print()">Registruj se</button>
+</div>
+</div>
+</div>
