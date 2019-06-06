@@ -69,6 +69,7 @@ public class UsersResource {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
         @GetMapping(value = "/")
+
     public List<Users> getAll() {
         return usersRepository.findAll();
     }
@@ -94,6 +95,7 @@ public class UsersResource {
     }*/
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+
     @PostMapping(value = "/")
     public ResponseEntity<?> createUser(@Valid @RequestBody Users user){
         System.out.println("Novi korisnik"+user.getIme());
