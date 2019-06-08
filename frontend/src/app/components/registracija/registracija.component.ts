@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/users.service';
 import { RegistracijaService } from '../../services/registracija.service';
 import { Osoba } from '../../models/osoba';
+import { OsobaLogin } from '../../models/osobaLogin';
+import { Router} from '@angular/router';
 @Component({
   templateUrl: './registracija.component.html',
   styleUrls: ['./registracija.component.css'],
@@ -19,12 +21,15 @@ export class RegistracijaComponent implements OnInit {
   url_slike: String='';
   errorMessage: String='';
   messageUspjesno: String='';
-    novi: Osoba;
+  novi: Osoba;
+  email_login: String='';
+  password_login: String='';
+  noviLogin: OsobaLogin;
 
 /*  constructor(private _registracijaService: RegistracijaService) {
 }*/
 
-constructor(private _userService: UserService,private _registracijaService:RegistracijaService) {
+constructor(private _userService: UserService,private _registracijaService:RegistracijaService, private router: Router) {
 
   this.korisnici=[];
  }
@@ -46,7 +51,7 @@ constructor(private _userService: UserService,private _registracijaService:Regis
     })
   }
   print() {
-      if(this.ime=='' || this.prezime=='' || this.email=='' || this.password=='')
+      if(this.ime=='' || this.prezime=='' || this.email=='' || this.password==''|| this.url_slike=='')
       {
         this.errorMessage='Molimo popunite sva polja!';
         this.messageUspjesno='';
@@ -61,9 +66,26 @@ constructor(private _userService: UserService,private _registracijaService:Regis
       this.novi=new Osoba(this.ime, this.prezime, this.email, this.password, this.url_slike);
       console.log("korisnik moj je",this.novi);
       this._registracijaService.prijava(this.novi);
-      this.errorMessage='';
+
+      this.errorMessage="";
       this.messageUspjesno='Uspjesno!';
     }
+
+    login(){
+  if(this.email_login=='' || this.password_login=='')
+  {
+    this.errorMessage='Molimo popunite sva polja!';
+    this.messageUspjesno='';
+    return;
+  }  console.log("ima li te");
+    this.noviLogin=new OsobaLogin(this.email_login, this.password_login);
+    this._registracijaService.login(this.noviLogin);
+    this.errorMessage='';
+    this.messageUspjesno='Uspjesno!';
+    if(this.errorMessage==''){
+     this.router.navigateByUrl('/');
+   }
+}
 
 
     /*this.errorMessage='';

@@ -13,6 +13,8 @@
       </ul>
   </div>
 </nav>
+
+<div class="sadrzaj">
 <div  class="vijesti-screen">
 <figure  *ngFor="let artikal of artikli" class="vijest">
   <img src={{artikal.pictures.slika}} class="imgs" >
@@ -22,9 +24,13 @@
     <h3>{{artikal.naziv}}</h3>
     <span class="cijena">{{artikal.cijena}}</span></div>
     <p> {{artikal.kratki_tekst}} </p>
-    <button>Procitaj vise</button>
+    <button (click)="onClick(artikal.broj)">Procitaj vise</button>
   </figcaption><a href="#"></a>
 </figure>
+</div>
+</div>
+
+
 
 
 

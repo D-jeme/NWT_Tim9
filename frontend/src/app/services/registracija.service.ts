@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Osoba } from '../models/osoba';
+import { OsobaLogin } from '../models/osobaLogin';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -37,5 +38,32 @@ console.log(body);
     }
 
     );
+}
+
+
+
+
+login(clan: OsobaLogin){
+  console.log("ima li te ", clan);
+  var body = JSON.stringify(clan);
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
+console.log(body);
+  this._http.post(this.url + '/rest/users/login',
+  body,
+    {
+      headers: headers
+    }
+  ).map(res=> res.json()).subscribe(
+    data => {
+        console.log(data);
+        localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
+      },
+  error =>{
+    console.log(error);
+  }
+
+  );
 }
 }

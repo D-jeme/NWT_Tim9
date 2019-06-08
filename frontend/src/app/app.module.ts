@@ -26,7 +26,7 @@ import { MainpictureComponent } from './components/mainpicture/mainpicture.compo
 import { DodajslikuComponent } from './components/dodajsliku/dodajsliku.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { RegistracijaComponent } from './components/registracija/registracija.component';
-
+import { PreviewArticleComponent } from './components/previewArticle/previewArticle.component';
 
 
 
@@ -41,7 +41,8 @@ DodajslikuComponent,
     MainpictureComponent,
 
     MainpageComponent,
-    RegistracijaComponent
+    RegistracijaComponent,
+    PreviewArticleComponent
 
 ],
 

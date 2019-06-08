@@ -6,8 +6,42 @@ import { Router} from '@angular/router';
 @Injectable()
 export class ArticlesService{
   url:string="http://localhost:8084/articles/articles";
+  idArtikla:String;
 
-  constructor(private _http:Http){}
+
+  constructor(private _http:Http){this.idArtikla="";}
+
+  postaviIdArtikla(id:String){
+    this.idArtikla='/'+id;
+    console.log("Id artikla",this.idArtikla);
+  }
+
+  dajArtikal( ) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this._http.get( this.url + this.idArtikla , {
+      headers: headers
+    } )
+      .map( data => {
+        return data.json();
+      } );
+  }
+
+  getArticle(id:Number){
+
+    console.log("tu saam");
+    var headers=new Headers();
+    headers.append('Content-Type', 'application/json');
+  //  headers.append('Access-Control-Allow-Origin','https://localhost:8082');
+    console.log("header je ",headers);
+    this.url=this.url + '/';
+    return this._http.get( this.url +id, {headers:headers
+    } )
+      .map( data => {
+        console.log("Artikli",data);
+        return data.json();
+      } );
+  }
 
   getArticles(){
     console.log("tu saam");
@@ -23,6 +57,9 @@ export class ArticlesService{
         return data.json();
       } );
   }
+
+
+
 
   addArticle(name:String,kratki_tekst:String,dugi_tekst:String,cijena:Number,kolicina:Number,popust:Number,objavio:Number=1,slika:String){
 

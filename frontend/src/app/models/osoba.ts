@@ -11,4 +11,5 @@ export class Osoba {
     this.password=password;
     this.newPassword_url=newPassword_url;
   }
+
 }

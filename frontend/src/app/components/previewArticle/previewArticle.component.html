@@ -9,17 +9,16 @@
 </nav>
 
 
+
+
+
 <div class="elektrijada">
 
 <div class='container'>
 
     <blockquote>
   <div class="login">
-  <h1>LOGIN</h1>
-  <input type="text" [(ngModel)]="email_login" name="email_login" placeholder="Email" required>
-  <input type="password" [(ngModel)]="password_login" name="password_login" placeholder="Password" required>
-<button (click)="login()" class="loginbtn" >Prijava</button>
-
+<img src="{{slika}}" class="imgs" >
   </div>
       </blockquote>
 
@@ -28,16 +27,19 @@
 
 <blockquote class='left-vertical-line'>
 
-  <h1>REGISTRACIJA</h1>
-  <input type="text" [(ngModel)]="ime" name="ime" placeholder="Ime" required>
-  <input type="text" [(ngModel)]="prezime" name="prezime" placeholder="Prezime" required>
-  <input type="text" [(ngModel)]="email" name="email" placeholder="Email" required>
+  <h3 class="naslov">{{naziv}}</h3>
 
-  <input type="text" [(ngModel)]="url_slike" name="url_slike" placeholder="URL profilne slike" required>
-  <input type="password" [(ngModel)]="password" name="password" placeholder="password" required>
-  <input type="password" [(ngModel)]="password2" name="password" placeholder="Potvrdi password" required>
+  <h3>Description</h3>
+  <p class="short_text">{{kratki_tekst}}</p>
 
-  <button (click)="print()">Registracija</button>
+  <h3>Specs</h3>
+  <p class="long_text">{{dugi_tekst}}</p>
+
+  <h3 class="leftc">Price</h3><h3 class="rightcijena">{{cijena}}KM</h3>
+  <h3 class="leftc">Old Price</h3><h3 class="rightold">3239.99KM</h3>
+  <h3 class="leftc">Sale</h3>
+  <h3 class="rightsale">{{popust}}%</h3>
+  <button (click)="print()">Add to cart</button>
 
     </blockquote>
     </div>
