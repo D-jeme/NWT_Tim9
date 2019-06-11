@@ -69,22 +69,22 @@ export class ArticlesService{
     headers.append('Content-Type', 'application/json');
     //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
 console.log("body",body);
-    this._http.post(this.url + '/',
+    return this._http.post(this.url + '/',
     body,
       {
         headers: headers
       }
-    ).map(res=> res.json()).subscribe(
+    ).map(
       data => {
           console.log(data);
+          return data.json();
 
-        },
-    error =>{
-      console.log(error);
-    }
+        });
 
-    );
+
   }
 
 
+
+//postaviStaruCijenu(stara_cijena: Number)
 }

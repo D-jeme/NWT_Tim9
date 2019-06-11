@@ -11,7 +11,8 @@ import { Router} from '@angular/router';
 })
 export class RegistracijaComponent implements OnInit {
 
-  korisnici:Array<any>
+  korisnici:any;
+  korisniklogin:any;
 
   ime: String='';
   prezime: String='';
@@ -79,10 +80,11 @@ constructor(private _userService: UserService,private _registracijaService:Regis
     return;
   }  console.log("ima li te");
     this.noviLogin=new OsobaLogin(this.email_login, this.password_login);
-    this._registracijaService.login(this.noviLogin);
+    this._registracijaService.login(this.noviLogin).subscribe(data=>{console.log("vraceno",data); this.korisniklogin=data.MESSAGE;});
     this.errorMessage='';
     this.messageUspjesno='Uspjesno!';
-    if(this.errorMessage==''){
+    console.log("Porukicaa",this.korisniklogin);
+    if(this.korisnici==''){
      this.router.navigateByUrl('/');
    }
 }

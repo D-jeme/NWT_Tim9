@@ -1,17 +1,31 @@
-<div class="elektrijada">
-<div class="form-content">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul></ul>
+      <ul class="nav navbar-nav navbar-center">
+            <li><a (click)="getArticles()"><img src="https://i.ibb.co/C8RdHfB/logo.png" alt="logo" border="0" align="center"></a></li>
+      </ul>
+  </div>
+</nav>
+
 <div>
-  <h2>REGISTRACIJA</h2>
-  <fieldset class="groupBox">
-  <input type="text" [(ngModel)]="name" name="name" placeholder="Name" required>
-  <input type="text" [(ngModel)]="kratki_tekst" name="kratki_tekst" placeholder="Kratki tekst" required>
-  <input type="text" [(ngModel)]="dugi_tekst" name="dugi_tekst" placeholder="Dugi tekst" required>
+
+
+<div class="centrirano">
+  <h4 class="naslovcic">+ DODAVANJE NOVOG PROIZVODA</h4>
+  <br>
+  <fieldset class="groupBox" style="margin-top:5px;">
+  <input type="text" class="polje" [(ngModel)]="name" name="name" placeholder="Naziv" required>
+    <input type="text" [(ngModel)]="cijena" name="cijena" placeholder="Cijena" required>
+      <input type="text" [(ngModel)]="kolicina" name="kolicina" placeholder="Kolicina" required>
+        <input type="text" [(ngModel)]="popust" name="popust" placeholder="Popust" required>
+
 </fieldset>
   <fieldset class="groupBox" style="margin-top:5px;">
-  <input type="text" [(ngModel)]="cijena" name="cijena" placeholder="Cijena slike" required>
-  <input type="text" [(ngModel)]="kolicina" name="kolicina" placeholder="Kolicina" required>
+    <input type="text" [(ngModel)]="kratki_tekst" name="kratki_tekst" placeholder="Kratki tekst" required>
+    <input type="text" [(ngModel)]="dugi_tekst" name="dugi_tekst" placeholder="Dugi tekst" required>
 
-  <input type="text" [(ngModel)]="popust" name="popust" placeholder="Popust" required>
+
+
   <input type="file"  ng2FileSelect [uploader]="uploader" accept="image/*"  multiple/><br/>
         <button id="upl" (click)="upload()">Upload</button>
 
@@ -33,10 +47,25 @@
         </div>
   <popup (confirmClick)="YourCancelEvent()" >Uspjesno ste dodali Album </popup>
 </fieldset>
-
+  <div class="error" *ngIf="proizvod!=''">{{proizvod}}</div>
   <div class="error" *ngIf="errorMessage!=''">{{errorMessage}}</div>
-  <div class="poruka" *ngIf="messageUspjesno!=''">{{messageUspjesno}}</div>
-  <button (click)="print()">Registruj se</button>
-</div>
-</div>
+  <div class="poruka" *ngIf="errorMessage==''&& proizvod==''">{{messageUspjesno}}</div>
+  <button class="btn_n"(click)="print()">KREIRAJ PROIZVOD</button>
+
+  </div>
+
+  <div class="centrirano1">
+    <br>
+<h4 class="naslovcic1"> - BRISANJE KORISNIKA</h4>
+
+<br>
+<fieldset class="groupBox" style="margin-top:5px;">
+<input type="text" class="polje" [(ngModel)]="name" name="name" placeholder="Naziv" required>
+
+
+</fieldset>
+
+  </div>
+
+
 </div>

@@ -22,6 +22,9 @@ export class DodajslikuComponent implements OnInit,DoCheck {
   popust: Number;
   slika: String='';
   url:String;
+  errorMessage: String='';
+  messageUspjesno: String='';
+    proizvod:String='';
 
 
 /*  constructor(private _registracijaService: RegistracijaService) {
@@ -87,29 +90,19 @@ constructor(private _userService: UserService,private _articlesService:ArticlesS
   print() {
 
     console.log("ime ",this.name);
-    this._articlesService.addArticle(this.name,this.kratki_tekst,this.dugi_tekst,this.cijena,this.kolicina,this.popust,1,this.url)
-    /*  if(this.ime=='' || this.prezime=='' || this.email=='' || this.password=='')
+
+
+      if(this.name=='' || this.kratki_tekst=='' || this.dugi_tekst=='' || this.cijena==null || this.kolicina==null)
       {
         this.errorMessage='Molimo popunite sva polja!';
         this.messageUspjesno='';
         return;
       }
-      else if(this.password!=this.password2) {
-        this.errorMessage='Lozinke se ne podudaraju!';
-        this.messageUspjesno='';
-        return;
-      }
-      console.log("ima li te");
-      this.novi=new Osoba(this.ime, this.prezime, this.email, this.password, this.url_slike);
-      console.log("korisnik moj je",this.novi);
-      this._registracijaService.prijava(this.novi);
-      this.errorMessage='';
-      this.messageUspjesno='Uspjesno!';*/
 
-
-
-
-
+      this._articlesService.addArticle(this.name,this.kratki_tekst,this.dugi_tekst,this.cijena,this.kolicina,this.popust,1,this.url).subscribe(data=>{console.log("vraceno",data); this.proizvod=data.MESSAGE;})
+      //if(this.proizvod==''&& this.errorMessage=='' ) {this.messageUspjesno='Uspjesno!'; console.log("U IF-u sam",this.messageUspjesno);console.log("U IF-u sam neus",this.errorMessage); console.log("U IF-u sam pro",this.proizvod);}
+      //else {this.errorMessage='Unijeli ste artikal sa već postojećim nazivom!'; console.log("U ELSE-u sam",this.messageUspjesno); console.log("U ELSE-u sam",this.errorMessage);}
+this.messageUspjesno='Uspješno ste dodali novi artikal.';
 
     }
 

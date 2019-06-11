@@ -31,7 +31,7 @@ console.log(body);
     ).map(res=> res.json()).subscribe(
       data => {
           console.log(data);
-          localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
+          //localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
         },
     error =>{
       console.log(error);
@@ -50,20 +50,16 @@ login(clan: OsobaLogin){
   headers.append('Content-Type', 'application/json');
   //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
 console.log(body);
-  this._http.post(this.url + '/rest/users/login',
+  return this._http.post(this.url + '/rest/users/login',
   body,
     {
       headers: headers
     }
-  ).map(res=> res.json()).subscribe(
+  ).map(
     data => {
         console.log(data);
-        localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
-      },
-  error =>{
-    console.log(error);
-  }
-
-  );
+      //  localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
+        return data.json();
+      });
 }
 }

@@ -18,7 +18,7 @@ export class PreviewArticleComponent implements OnInit, OnDestroy {
     dugi_tekst: String;
     cijena: Number;
     popust: Number;
-    nova_cijena: Number;
+    stara_cijena: Number;
     slika: String;
 
 
@@ -47,6 +47,9 @@ this._articlesService.getArticle(this.id).subscribe(
     this.popust=data.popust;
     this.slika=data.pictures.slika;
   }
+
+//  this._articlesService.postaviStaruCijenu(Number(this.stara_cijena));
+
 )
 
 /*
