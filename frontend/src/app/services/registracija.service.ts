@@ -50,16 +50,18 @@ login(clan: OsobaLogin){
   headers.append('Content-Type', 'application/json');
   //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
 console.log(body);
-  return this._http.post(this.url + '/rest/users/login',
+return this._http.post(this.url + '/rest/users/login',
   body,
     {
       headers: headers
     }
   ).map(
     data => {
-        console.log(data);
+        console.log('login podaci',data);
       //  localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
         return data.json();
-      });
+      }
+
+  );
 }
 }

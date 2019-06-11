@@ -80,13 +80,16 @@ constructor(private _userService: UserService,private _registracijaService:Regis
     return;
   }  console.log("ima li te");
     this.noviLogin=new OsobaLogin(this.email_login, this.password_login);
-    this._registracijaService.login(this.noviLogin).subscribe(data=>{console.log("vraceno",data); this.korisniklogin=data.MESSAGE;});
+    this._registracijaService.login(this.noviLogin).subscribe(data=>{
+
+      if(data.data.role.id==1)this.router.navigateByUrl('/dodajsliku');///ovdje dodaj admin rutu
+      else this.router.navigateByUrl('/');
+      console.log("podaci o prijavi",data.data.role.id);
+
+    });
     this.errorMessage='';
     this.messageUspjesno='Uspjesno!';
-    console.log("Porukicaa",this.korisniklogin);
-    if(this.korisnici==''){
-     this.router.navigateByUrl('/');
-   }
+
 }
 
 
