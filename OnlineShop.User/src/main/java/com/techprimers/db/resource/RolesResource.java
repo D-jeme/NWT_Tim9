@@ -23,6 +23,7 @@ public class RolesResource {
 
     @GetMapping(value = "/")
     public List<Roles> getAll() {
+        System.out.println("USEEEEER IIIIIIIIIID" + rolesRepository.findById((long)1));
         return rolesRepository.findAll();
     }
 

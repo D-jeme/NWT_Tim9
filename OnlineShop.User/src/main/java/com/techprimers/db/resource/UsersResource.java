@@ -1,7 +1,9 @@
 package com.techprimers.db.resource;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.techprimers.db.model.Roles;
 import com.techprimers.db.model.Users;
+import com.techprimers.db.repository.RolesRepository;
 import com.techprimers.db.repository.UsersRepository;
 import com.techprimers.db.services.UserEventHandler;
 import net.minidev.json.JSONObject;
@@ -37,6 +39,7 @@ public class UsersResource {
 
     @Autowired
     UsersRepository usersRepository;
+    RolesRepository rolesRepository;
     @LoadBalanced
     @Autowired
     private RestTemplate restTemplate;
@@ -126,6 +129,7 @@ public class UsersResource {
             user.setProfile_image_id(picture_id);
         }
         else user.setNewPassword_url("");
+        user.setRole(rolesRepository.findById((long)1));
         usersRepository.save(user);
         message.put("MESSAGE", "User is successfully created");
         return new ResponseEntity<>(message,HttpStatus.OK);
@@ -146,6 +150,7 @@ public class UsersResource {
             System.out.println("PSWWWWWWWWWWW"+loggedInUser.getPassword());
             if (passwordEncoder.matches(user.getNewPassword_url(), loggedInUser.getPassword())) {
                 message.put("MESSAGE", "Korisnik je ulogovan uspješno");
+                message.put("data",loggedInUser);
                 return new ResponseEntity<>(message,HttpStatus.OK);
             }
             message.put("MESSAGE", "Email ili password su pogrešno uneseni.");
