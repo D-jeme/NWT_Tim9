@@ -27,6 +27,9 @@ import { DodajslikuComponent } from './components/dodajsliku/dodajsliku.componen
 import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { RegistracijaComponent } from './components/registracija/registracija.component';
 import { PreviewArticleComponent } from './components/previewArticle/previewArticle.component';
+import { AdminArticlesComponent } from './components/aarticles/aarticles.component';
+import { AdminPreviewArticleComponent } from './components/apreviewArticle/apreviewArticle.component';
+import { UpdateProfileComponent } from './components/updateProfile/updateProfile.component';
 
 
 
@@ -39,10 +42,12 @@ import { PreviewArticleComponent } from './components/previewArticle/previewArti
     AppComponent,
 DodajslikuComponent,
     MainpictureComponent,
-
+AdminArticlesComponent,
     MainpageComponent,
     RegistracijaComponent,
-    PreviewArticleComponent
+    PreviewArticleComponent,
+    AdminPreviewArticleComponent,
+    UpdateProfileComponent
 
 ],
 

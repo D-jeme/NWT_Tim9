@@ -25,4 +25,44 @@ export class UserService{
   }
 
 
+
+
+    getUser(id:Number){
+
+      console.log("tu saam");
+      var headers=new Headers();
+      headers.append('Content-Type', 'application/json');
+    //  headers.append('Access-Control-Allow-Origin','https://localhost:8082');
+      console.log("header je ",headers);
+      this.url+ '/';
+      return this._http.get( this.url +'/'+id, {headers:headers
+      } )
+        .map( data => {
+          console.log("User",data);
+          return data.json();
+        } );
+    }
+
+    updateUser(id:Number,ime:String,prezime:String,email:String){
+
+      var body = JSON.stringify({ime,prezime,email});
+
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
+    console.log("body",body);
+      return this._http.put(this.url + '/novi/'+id,
+      body,
+        {
+          headers: headers
+        }
+      ).map(
+        data => {
+            console.log(data);
+            return data.json();
+
+          });
+    }
+
+
 }
