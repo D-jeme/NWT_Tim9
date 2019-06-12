@@ -246,4 +246,24 @@ public class ArticlesResource {
         return new ResponseEntity<Articles>(articlesRepository.save(article), HttpStatus.OK);
     }
 
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> izmijeniProizvod (@PathVariable Integer id,@RequestBody final Articles articles){
+        System.out.println("TU SAAAAM"+articles);
+
+        Map<String, Object> message = new HashMap<String, Object>();
+        Articles article=articlesRepository.findByBroj(id);
+        if(article==null){
+            message.put("MESSAGE","Ne postoji artikal u bazi sa id "+id);
+
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+        article.setKratki_tekst(articles.getKratki_tekst());
+        article.setDugi_tekst(articles.getDugi_tekst());
+        article.setCijena(articles.getCijena());
+        article.setPopust(articles.getPopust());
+
+        return new ResponseEntity<Articles>(articlesRepository.save(article), HttpStatus.OK);
+    }
+
 }

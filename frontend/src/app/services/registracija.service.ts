@@ -31,7 +31,7 @@ console.log(body);
     ).map(res=> res.json()).subscribe(
       data => {
           console.log(data);
-          localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
+          //localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
         },
     error =>{
       console.log(error);

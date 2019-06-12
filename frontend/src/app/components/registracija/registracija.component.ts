@@ -11,7 +11,8 @@ import { Router} from '@angular/router';
 })
 export class RegistracijaComponent implements OnInit {
 
-  korisnici:Array<any>
+  korisnici:any;
+  korisniklogin:any;
 
   ime: String='';
   prezime: String='';

@@ -1,0 +1,46 @@
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul></ul>
+      <ul class="nav navbar-nav navbar-center">
+            <li><a (click)="getArticles()"><img src="https://i.ibb.co/C8RdHfB/logo.png" alt="logo" border="0" align="center"></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#"><i class="material-icons" style="font-size:40px;color:teal">shopping_cart</i></a>
+            <a href="#"><i class="material-icons" style="font-size:40px;color:teal" (click)="openLogin()">account_circle</i></a>
+        </li>
+      </ul>
+  </div>
+</nav>
+<div class="sadrzaj">
+<div  class="vijesti-screen">
+
+  <div class="okolo">
+<figure  *ngFor="let artikal of artikli" class="vijest">
+  <img src={{artikal.pictures.slika}} class="imgs" >
+  <div class="datum"><span class="dan">12</span></div>
+  <figcaption>
+    <div class="naslov">
+    <h3>{{artikal.naziv}}</h3>
+    <span class="cijena">{{artikal.cijena}}</span></div>
+    <p> {{artikal.kratki_tekst}} </p>
+    <button (click)="onClick(artikal.broj)">Procitaj vise</button>
+  </figcaption><a href="#"></a>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+
+<!--><h3>Svi artikli</h3>
+<div *ngFor="let artikal of artikli">
+
+
+<i>{{artikal.naziv}}</i>
+<i>{{artikal.kratki_tekst}}</i>
+
+
+</div><-->

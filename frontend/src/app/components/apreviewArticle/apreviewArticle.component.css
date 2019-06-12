@@ -140,7 +140,6 @@ button:hover {
 .login{
   float: left;
   margin-top: 150px;
-  margin-left: 200px;
 }
 
 .registracija{
@@ -153,7 +152,6 @@ button:hover {
 
 .container {
   background: #16222A;
-  background-image: url('../../assets/images/backgroundimg.jpg');
 
   background-size: cover;
   background-position: center center;
@@ -161,10 +159,8 @@ button:hover {
   background-repeat: no-repeat;
   width:100%;
   height: 800px;
-  opacity: 0.7;
   position:relative;
   width: 100%;
-  padding: 6rem 0;
     height: 100%;
 }
 .container:nth-child(odd) {
@@ -195,7 +191,7 @@ button:hover {
 }
 
 input{
-  border-top-width: 0px;
+  border:none;
    background: none;
   border-bottom:2px solid #123b3f;
   width:100%;
@@ -222,10 +218,59 @@ blockquote{
   margin-left: 150px;
 }
 
-body{
-    background-image: url('../../assets/images/backgroundimg.jpg');
+
+.imgs{
+max-width: 100%;
+vertical-align: top;
+width: 500px;
+height: 500px;
+margin:0;
+transition: all 0.5s ease;
 }
 
-html{
-    background-image: url('../../assets/images/backgroundimg.jpg');
+
+.short_text{
+  font-size: 26px;
+  text-align: justify;
+}
+.long_text{
+  font-size: 20px;
+  text-align: justify;
+}
+
+h3{
+  padding-top: 15px;
+  padding-bottom: 8px;
+}
+
+.naslov{
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: black;
+}
+
+.leftc{
+  float: left;
+  width: 50%;
+  padding-bottom: 12px;
+}
+.rightcijena{
+  float: right;
+  width: 50%;
+  text-decoration: underline;
+  font-size: 30px;
+  color: red;
+}
+.rightsale{
+  float: right;
+  width: 50%;
+  font-size: 24px;
+  padding-bottom: 2px;
+}
+.rightold{
+  float: right;
+  width: 50%;
+  text-decoration:line-through;
+  font-size: 26px;
 }

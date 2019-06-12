@@ -59,6 +59,7 @@ public class PicturesResource {
             message.put("MESSAGE", "Polje slika se mora biti URL");
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
+        System.out.println("TU SAMMMM1111");
         picturesRepository.save(pictures);
         System.out.println("TU SAMMMM");
         return new ResponseEntity<Collection<Pictures>>(this.picturesRepository.findAll(), HttpStatus.OK);

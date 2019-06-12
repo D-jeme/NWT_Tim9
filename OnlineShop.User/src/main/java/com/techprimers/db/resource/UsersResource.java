@@ -77,6 +77,7 @@ public class UsersResource {
         return usersRepository.findAll();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(value = "/{id}")
     public Users getUser(@PathVariable Long id){
       userEventHandler.handleAfterCreated( usersRepository.findById(id));
@@ -159,7 +160,7 @@ public class UsersResource {
         message.put("MESSAGE", "Email ili password su pogrešno unesenii.");
         return new ResponseEntity<>(message,HttpStatus.CONFLICT);
     }
-
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateUser(@PathVariable Long id, @Valid @RequestBody Users user) {
         Users existing = usersRepository.findById(id);
@@ -202,6 +203,56 @@ public class UsersResource {
         message.put("MESSAGE", "Updated user.");
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PutMapping("/novi/{id}")
+    public ResponseEntity<?> updateUse(@PathVariable Long id, @Valid @RequestBody Users user) {
+        System.out.println("Ima li mee"+user);
+        Users existing = usersRepository.findById(id);
+        Map<String,Object> message=new HashMap<String, Object>();
+        if (existing == null) {
+            message.put("MESSAGE", "User doesn't exist.");
+            return new ResponseEntity<>(message,HttpStatus.CONFLICT);
+        }
+        //JSONObject jsonObject=new JSONObject();
+        //jsonObject.put("slika",user.getNewPassword_url());
+        existing.setIme(user.getIme());
+        existing.setPrezime(user.getPrezime());
+    //    System.out.println("USERR PSW"+user.getPassword());
+       // String psw=user.getNewPassword();
+       // System.out.println("sta je ovdjee"+psw);
+    //    existing.setPassword(user.getNewPassword());
+    //    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    //    System.out.println("EXISTIIING"+existing.getPassword());
+    //    System.out.println("Compare 1 " + passwordEncoder.matches(user.getNewPassword(), existing.getPassword()));
+    //    System.out.println("PSWWW"+existing.getPassword());
+       // Boolean pictureexists =  restTemplate.postForObject("http://articles/pictures/exist",user.getNewPassword_url(),Boolean.class);
+        //user.setRole(existing.getRole());
+        //System.out.println("porukaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+pictureexists);
+        /*if(pictureexists==true) {
+            System.out.println("TRUEEEEEEEE");
+            Integer picture=restTemplate.postForObject("http://articles/pictures/picture_id",user.getNewPassword_url(), Integer.class);
+            System.out.println("PICTRUREEEE"+picture);
+            existing.setNewPassword_url("");
+            existing.setProfile_image_id(picture);
+            usersRepository.save(existing);
+            message.put("MESSAGE", "Updated user.");
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        }*/
+        System.out.println("FALSEEEEEEEEEEEE");
+        //String re=restTemplate.postForObject("http://articles/pictures/picture",jsonObject,String.class);
+        //System.out.println("RESPONSEEEEEEE"+re);
+        //Integer picture_id=restTemplate.postForObject("http://articles/pictures/picture_id",user.getNewPassword_url(), Integer.class);
+        //existing.setNewPassword_url("");
+        //existing.setProfile_image_id(picture_id);
+        usersRepository.save(existing);
+        message.put("MESSAGE", "Updated user.");
+        return new ResponseEntity<>(message,HttpStatus.OK);
+    }
+
+
+
+
   /*  @PostMapping("/login")
     public Users login(@Valid @RequestBody ){
 
@@ -210,7 +261,7 @@ public class UsersResource {
         usersRepository.save(user);
         return "Updated user";
     }*/
-
+  @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         System.out.println("USEEEEER IIIIIIIIIID" + id);

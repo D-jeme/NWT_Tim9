@@ -43,6 +43,8 @@ export class ArticlesService{
       } );
   }
 
+
+
   getArticles(){
     console.log("tu saam");
     var headers=new Headers();
@@ -69,22 +71,42 @@ export class ArticlesService{
     headers.append('Content-Type', 'application/json');
     //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
 console.log("body",body);
-    this._http.post(this.url + '/',
+    return this._http.post(this.url + '/',
     body,
       {
         headers: headers
       }
-    ).map(res=> res.json()).subscribe(
+    ).map(
       data => {
           console.log(data);
+          return data.json();
 
-        },
-    error =>{
-      console.log(error);
-    }
-
-    );
+        });
   }
 
 
+  updateAr(id:Number,kratki_tekst:String,dugi_tekst:String,cijena:Number,popust:Number){
+
+    var body = JSON.stringify({kratki_tekst,dugi_tekst,cijena,popust,});
+
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
+  console.log("body",body);
+    return this._http.put(this.url + id,
+    body,
+      {
+        headers: headers
+      }
+    ).map(
+      data => {
+          console.log(data);
+          return data.json();
+
+        });
+  }
+
+
+
+//postaviStaruCijenu(stara_cijena: Number)
 }

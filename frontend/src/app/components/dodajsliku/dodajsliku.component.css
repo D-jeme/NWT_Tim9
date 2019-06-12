@@ -373,6 +373,7 @@ h2{background: #4D4D4D;
     padding: 30px;
 }
 button{
+
     -moz-box-shadow: inset 0px 1px 0px 0px #4D4D4D;
     -webkit-box-shadow: inset 0px 1px 0px 0px #4D4D4D;
     box-shadow: inset 0px 1px 0px 0px #4D4D4D;
@@ -392,6 +393,30 @@ button{
     text-transform: uppercase;
     border-radius: 4px;
 }
+
+.btn_n{
+  -moz-box-shadow: inset 0px 1px 0px 0px #14709e;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #14709e;
+  box-shadow: inset 0px 1px 0px 0px #14709e;
+  background-color: #14709e;
+  border: 1px solid #14709e;
+  display: inline-block;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  margin-left:100px;
+  margin-right: 50px;
+  float:none;
+  padding: 5px 28px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 4px;
+  text-align: center;
+  align:center;
+  float: right;
+}
+
 button:hover {
     background:linear-gradient(to bottom, #666666 5%, #808080 100%);
     background-color:#666666;
@@ -411,6 +436,31 @@ button:hover {
   font-family: 'Roboto', sans-serif;
 }
 
+
+.polje {
+  border-top-width: 0px;
+}
+
+.naslovcic{
+  color: green;
+  font-weight: bold;
+}
+
+.naslovcic1{
+  color: red;
+  font-weight: bold;
+}
+
+.centrirano{
+  margin-left: 350px;
+  margin-right: 350px;
+  min-height: 400px;
+}
+
+.centrirano1{
+  margin-left: 350px;
+  margin-right: 350px;
+}
 
 /*@media only screen and (max-width: 1367px){
   div.elektrijada{
