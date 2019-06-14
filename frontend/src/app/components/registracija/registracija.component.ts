@@ -85,6 +85,7 @@ constructor(private _userService: UserService,private _registracijaService:Regis
       this._registracijaService.prijava(this.novi);
 
       this.errorMessage="";
+  this.router.navigateByUrl('/');
       //this.messageUspjesno='Uspjesno!';
     }
 

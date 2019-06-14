@@ -41,7 +41,7 @@ constructor(private _articlesService: ArticlesService, private route: ActivatedR
 
 
   ngOnInit() {
-    if(localStorage.getItem('uloga')=='admin') this.router.navigateByUrl('/registracija');
+    if(localStorage.getItem('uloga')!='admin') this.router.navigateByUrl('/registracija');
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id'];
  console.log("param*********",this.id);

@@ -35,6 +35,10 @@ artikli:Array<any>
     })
   }
 
+  openPanel(){
+    this.router.navigateByUrl('/dodajsliku');
+  }
+
   logout()
   {
     localStorage.setItem('key', '');
