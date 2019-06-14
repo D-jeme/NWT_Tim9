@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ArticlesService } from '../../services/articles.service';
 import { Artikal } from '../../models/artikal';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
+
+import { Router} from '@angular/router';
 @Component({
   templateUrl: './previewArticle.component.html',
   styleUrls: ['./previewArticle.component.css'],
@@ -22,10 +24,16 @@ export class PreviewArticleComponent implements OnInit, OnDestroy {
     slika: String;
 
 
-constructor(private _articlesService: ArticlesService, private route: ActivatedRoute) {
+constructor(private _articlesService: ArticlesService, private route: ActivatedRoute,private router:Router) {
 
   this.korisnici=[];
 
+ }
+ logout()
+ {
+   localStorage.setItem('key', '');
+  localStorage.setItem('uloga', '');
+  this.router.navigateByUrl('/registracija');
  }
 
 

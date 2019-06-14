@@ -64,7 +64,7 @@ export class UserService{
           });
     }
 
-/*    deleteU(email:String){
+   /*deleteU(email:String){
       var body = JSON.stringify({email});
 
       var headers = new Headers();
@@ -72,7 +72,7 @@ export class UserService{
       //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
     console.log("body",body);
       return this._http.delete(this.url + '/',
-      body,
+
         {
           headers: headers
         }

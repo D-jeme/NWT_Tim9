@@ -32,6 +32,12 @@ constructor(private _articlesService: ArticlesService, private route: ActivatedR
   this.korisnici=[];
 
  }
+ logout()
+ {
+   localStorage.setItem('key', '');
+  localStorage.setItem('uloga', '');
+  this.router.navigateByUrl('/registracija');
+ }
 
 
   ngOnInit() {
