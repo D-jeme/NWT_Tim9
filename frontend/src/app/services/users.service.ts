@@ -64,5 +64,26 @@ export class UserService{
           });
     }
 
+/*    deleteU(email:String){
+      var body = JSON.stringify({email});
+
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
+    console.log("body",body);
+      return this._http.delete(this.url + '/',
+      body,
+        {
+          headers: headers
+        }
+      ).map(
+        data => {
+            console.log(data);
+            return data.json();
+
+          });
+    }*/
+
+
 
 }

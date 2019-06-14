@@ -60,7 +60,7 @@ return this._http.post(this.url + '/rest/users/login',
         console.log('login podaci',data);
       //  localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
         return data.json();
-      }
+      },error=>{return null;}
 
   );
 }

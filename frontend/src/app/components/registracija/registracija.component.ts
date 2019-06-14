@@ -19,7 +19,7 @@ export class RegistracijaComponent implements OnInit {
   email: String='';
   password: String='';
   password2: String='';
-  url_slike: String='';
+  url_slike: String='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0WMIMCWCCZ8LxgACZMv3eO441cvSIsUIFH_8aR_e7JGy3UTiJTA';
   errorMessage: String='';
   messageUspjesno: String='';
   novi: Osoba;
@@ -58,6 +58,17 @@ constructor(private _userService: UserService,private _registracijaService:Regis
         this.messageUspjesno='';
         return;
       }
+
+      if((this.ime.length)<3 || (this.prezime.length)<3){
+        this.errorMessage='Polja ime i prezime trebaju sadržavati minimalno 3 karaktera!';
+        this.messageUspjesno='';
+        return;
+      }
+      if(!this.email.includes('@') || !this.email.includes('.')){
+        this.errorMessage='Polje email nije ispravno uneseno!';
+        this.messageUspjesno='';
+        return;
+      }
       else if(this.password!=this.password2) {
         this.errorMessage='Lozinke se ne podudaraju!';
         this.messageUspjesno='';
@@ -69,10 +80,12 @@ constructor(private _userService: UserService,private _registracijaService:Regis
       this._registracijaService.prijava(this.novi);
 
       this.errorMessage="";
-      this.messageUspjesno='Uspjesno!';
+      //this.messageUspjesno='Uspjesno!';
     }
 
     login(){
+      console.log("LOGOVII",this.errorMessage);
+          console.log("LOGOVII",this.messageUspjesno);
   if(this.email_login=='' || this.password_login=='')
   {
     this.errorMessage='Molimo popunite sva polja!';
@@ -81,14 +94,20 @@ constructor(private _userService: UserService,private _registracijaService:Regis
   }  console.log("ima li te");
     this.noviLogin=new OsobaLogin(this.email_login, this.password_login);
     this._registracijaService.login(this.noviLogin).subscribe(data=>{
-
-      if(data.data.role!=null)this.router.navigateByUrl('/aarticles');///ovdje dodaj admin rutu
-      else this.router.navigateByUrl('/');
-      console.log("podaci o prijavi",data.data.role.id);
+      console.log("sad",data);
+      if(data.data==null)   this.errorMessage='Email ili password nisu validni';
+      if(data.data.role!=null){ this.messageUspjesno='Uspješno ste se ulogovali';   console.log('Ispiiis', this.messageUspjesno);  this.router.navigateByUrl('/aarticles');}///ovdje dodaj admin rutu
+      else { this.messageUspjesno='Uspješno ste se ulogovali 1'; console.log('Ispiiis', this.messageUspjesno); this.router.navigateByUrl('/');
+      console.log("podaci o prijavi",data.data.role);}
 
     });
-    this.errorMessage='';
-    this.messageUspjesno='Uspjesno!';
+
+    setTimeout(()=>{
+
+      this.errorMessage='Email ili password nisu validni';
+
+    },500)
+    console.log('Ispiiis', this.messageUspjesno);
 
 }
 

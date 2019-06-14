@@ -37,4 +37,10 @@ artikli:Array<any>
     })
   }
 
+  openLogin(){
+      this.router.navigateByUrl('/registracija');
+  }
+
+
+
 }

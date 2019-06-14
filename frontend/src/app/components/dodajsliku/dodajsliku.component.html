@@ -47,20 +47,23 @@
         </div>
   <popup (confirmClick)="YourCancelEvent()" >Uspjesno ste dodali Album </popup>
 </fieldset>
-  <div class="error" *ngIf="proizvod!=''">{{proizvod}}</div>
+
   <div class="error" *ngIf="errorMessage!=''">{{errorMessage}}</div>
-  <div class="poruka" *ngIf="errorMessage==''&& proizvod==''">{{messageUspjesno}}</div>
+  <div class="poruka" *ngIf="messageUspjesno!=''">{{messageUspjesno}}</div>
   <button class="btn_n"(click)="print()">KREIRAJ PROIZVOD</button>
 
   </div>
 
+
+
+
   <div class="centrirano1">
     <br>
-<h4 class="naslovcic1"> - BRISANJE KORISNIKA</h4>
+<h4 class="naslovcic1"> - BRISANJE KORISNIKA</h4>  <button class="btn_n"(click)="deleteUser()">OBRIŠI KORISNIKA</button>
 
 <br>
 <fieldset class="groupBox" style="margin-top:5px;">
-<input type="text" class="polje" [(ngModel)]="name" name="name" placeholder="Naziv" required>
+<input type="text" class="polje" [(ngModel)]="email" name="name" placeholder="Email" required>
 
 
 </fieldset>

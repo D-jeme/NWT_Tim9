@@ -24,7 +24,8 @@ export class DodajslikuComponent implements OnInit,DoCheck {
   url:String;
   errorMessage: String='';
   messageUspjesno: String='';
-    proizvod:String='';
+  proizvod:String='';
+  email:String='';
 
 
 /*  constructor(private _registracijaService: RegistracijaService) {
@@ -73,6 +74,7 @@ constructor(private _userService: UserService,private _articlesService:ArticlesS
     this._userService.getUsers().subscribe(data=>{
       this.korisnici=data;
       console.log("ovi su podaci",this.korisnici);
+      console.log("OVo su imena",this.korisnici[0].ime);
     })
   }
 
@@ -105,6 +107,21 @@ constructor(private _userService: UserService,private _articlesService:ArticlesS
 this.messageUspjesno='Uspješno ste dodali novi artikal.';
 
     }
+
+  /*  deleteUser() {
+        if(this.email=='')
+        {
+          this.errorMessage='Molimo popunite polje za email!';
+          this.messageUspjesno='';
+          return;
+        }
+
+        this._userService.deleteU(this.email);
+        //if(this.proizvod==''&& this.errorMessage=='' ) {this.messageUspjesno='Uspjesno!'; console.log("U IF-u sam",this.messageUspjesno);console.log("U IF-u sam neus",this.errorMessage); console.log("U IF-u sam pro",this.proizvod);}
+        //else {this.errorMessage='Unijeli ste artikal sa već postojećim nazivom!'; console.log("U ELSE-u sam",this.messageUspjesno); console.log("U ELSE-u sam",this.errorMessage);}
+  this.messageUspjesno='Uspješno ste obrisali korisnika.';
+
+}*/
 
 
     /*this.errorMessage='';
