@@ -50,6 +50,10 @@ logout()
   openLogin(){
       this.router.navigateByUrl('/registracija');
   }
+
+  openPanel(){
+    this.router.navigateByUrl('/dodajsliku');
+  }
   
   openMyProfile()
 {
