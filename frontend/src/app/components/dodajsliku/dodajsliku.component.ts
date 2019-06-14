@@ -5,6 +5,8 @@ import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 import { FileUploader } from 'ng2-file-upload';
 import { Osoba } from '../../models/osoba';
 import {Popup} from 'ng2-opd-popup'
+
+import { Router} from '@angular/router';
 @Component({
   templateUrl: './dodajsliku.component.html',
   styleUrls: ['./dodajsliku.component.css'],
@@ -32,7 +34,7 @@ export class DodajslikuComponent implements OnInit,DoCheck {
 uploader: CloudinaryUploader = new CloudinaryUploader(
        new CloudinaryOptions({ cloudName: 'du4cgdhn8', uploadPreset: 'd4hf19h6' })
    );
-constructor(private _userService: UserService,private _articlesService:ArticlesService,private popup: Popup ) {
+constructor(private _userService: UserService, private router: Router,private _articlesService:ArticlesService,private popup: Popup ) {
 
   this.korisnici=[];
   this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
@@ -70,6 +72,7 @@ constructor(private _userService: UserService,private _articlesService:ArticlesS
 
 
   ngOnInit() {
+    if(localStorage.getItem('uloga')=='admin') this.router.navigateByUrl('/registracija');
     this._userService.getUsers().subscribe(data=>{
       this.korisnici=data;
       console.log("ovi su podaci",this.korisnici);

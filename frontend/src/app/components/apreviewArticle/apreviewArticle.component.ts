@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ArticlesService } from '../../services/articles.service';
 import { Artikal } from '../../models/artikal';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
+
+import { Router} from '@angular/router';
 @Component({
   templateUrl: './apreviewArticle.component.html',
   styleUrls: ['./apreviewArticle.component.css'],
@@ -25,7 +27,7 @@ export class AdminPreviewArticleComponent implements OnInit, OnDestroy {
         proizvod:String='';
 
 
-constructor(private _articlesService: ArticlesService, private route: ActivatedRoute) {
+constructor(private _articlesService: ArticlesService, private route: ActivatedRoute, private router: Router) {
 
   this.korisnici=[];
 
@@ -33,6 +35,7 @@ constructor(private _articlesService: ArticlesService, private route: ActivatedR
 
 
   ngOnInit() {
+    if(localStorage.getItem('uloga')=='admin') this.router.navigateByUrl('/registracija');
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id'];
  console.log("param*********",this.id);

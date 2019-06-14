@@ -22,7 +22,13 @@ artikli:Array<any>
 
 }
 
-  ngOnInit() {  console.log("kliknuo");
+  ngOnInit() {
+
+    if(localStorage.getItem('uloga')!='admin') this.router.navigateByUrl('/registracija');
+    console.log("spasio",localStorage.getItem('key'));
+
+      console.log("uloga",localStorage.getItem('uloga'));
+    console.log("kliknuo");
     this._articlesService.getArticles().subscribe(data=>{
       this.artikli=data;
       console.log("ovi su podaci",this.artikli);
