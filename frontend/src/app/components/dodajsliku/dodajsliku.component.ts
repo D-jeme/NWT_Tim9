@@ -85,9 +85,19 @@ logout()
     })
   }
 
-      upload() {
+  homePage()
+  {
+    this.router.navigateByUrl('/');
+  }
 
-          this.uploader.uploadAll();}
+  openMyProfile()
+{
+   this.router.navigateByUrl('/updateProfile');
+}
+
+  upload() {
+      this.uploader.uploadAll();
+    }
 
   getUsers(){
     console.log("kliknuo");

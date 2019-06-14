@@ -51,6 +51,14 @@ logout()
       this.router.navigateByUrl('/registracija');
   }
 
+  openPanel(){
+    this.router.navigateByUrl('/dodajsliku');
+  }
+  
+  openMyProfile()
+{
+   this.router.navigateByUrl('/updateProfile');
+}
 
 
 }

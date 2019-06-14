@@ -51,6 +51,11 @@ constructor(private _userService: UserService,private _registracijaService:Regis
       console.log("ovi su podaci",this.korisnici);
     })
   }
+
+  homePage()
+  {
+    this.router.navigateByUrl('/');
+  }
   print() {
       if(this.ime=='' || this.prezime=='' || this.email=='' || this.password==''|| this.url_slike=='')
       {

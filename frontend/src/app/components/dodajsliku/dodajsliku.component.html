@@ -2,7 +2,15 @@
   <div class="container-fluid">
     <ul></ul>
       <ul class="nav navbar-nav navbar-center">
-            <li><a (click)="getArticles()"><img src="https://i.ibb.co/C8RdHfB/logo.png" alt="logo" border="0" align="center"></a></li>
+            <li><a (click)="homePage()"><img src="https://i.ibb.co/C8RdHfB/logo.png" alt="logo" border="0" align="center"></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <div>
+            <i class="material-icons" style="font-size:40px;color:teal" (click)="openMyProfile()">account_circle</i>
+            <i class="material-icons" style="font-size:40px;color:teal" (click)="logout()">exit_to_app</i>
+          </div>
+        </li>
       </ul>
   </div>
 </nav>

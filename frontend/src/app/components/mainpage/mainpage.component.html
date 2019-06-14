@@ -8,8 +8,9 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <div>
-            <a href="#"><i class="material-icons" style="font-size:40px;color:teal">shopping_cart</i></a>
-            <a href="#"><i class="material-icons" style="font-size:40px;color:teal" (click)="openLogin()">account_circle</i></a>
+            <i class="material-icons" style="font-size:40px;color:teal" (click)="openPanel()">add_circle_outline</i>
+            <i class="material-icons" style="font-size:40px;color:teal" (click)="openLogin()">account_circle</i>
+            <i class="material-icons" style="font-size:40px;color:teal" (click)="logout()">exit_to_app</i>
           </div>
         </li>
       </ul>
@@ -21,7 +22,8 @@
   <div class="okolo">
 <figure  *ngFor="let artikal of artikli" class="vijest">
   <img src={{artikal.pictures.slika}} class="imgs" >
-  <div class="datum"><span class="dan">12</span></div>
+  <div class="datum" *ngIf="artikal.popust>0"><span class="dan" >{{artikal.popust}}%</span>
+    <span>sniženo</span></div>
   <figcaption>
     <div class="naslov">
     <h3>{{artikal.naziv}}</h3>

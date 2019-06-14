@@ -57,6 +57,8 @@ this._articlesService.getArticle(this.id).subscribe(
     this.stara_cijena=(data.cijena/(100-data.popust)*100).toFixed(2);
   }
 
+
+
 //  this._articlesService.postaviStaruCijenu(Number(this.stara_cijena));
 
 )
@@ -95,6 +97,16 @@ this.popust=this.artikli.popust;
   );*/
   }
 
+  openMyProfile()
+{
+   this.router.navigateByUrl('/updateProfile');
+}
+
+
+homePage()
+{
+  this.router.navigateByUrl('/');
+}
   ngOnDestroy(){
 
 }
