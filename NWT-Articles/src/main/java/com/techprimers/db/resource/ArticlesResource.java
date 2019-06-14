@@ -247,6 +247,9 @@ public class ArticlesResource {
     }
 
 
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+
     @PutMapping("/{id}")
     public ResponseEntity<?> izmijeniProizvod (@PathVariable Integer id,@RequestBody final Articles articles){
         System.out.println("TU SAAAAM"+articles);

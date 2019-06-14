@@ -29,13 +29,9 @@ constructor(private _userService: UserService, private route: ActivatedRoute) {
 
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-       this.id = params['id'];
- console.log("param*********",this.id);
 
-});
 
-this._userService.getUser(this.id).subscribe(
+this._userService.getUser(+localStorage.getItem('key')).subscribe(
   data=>{
     console.log("ovo je",data);
 
