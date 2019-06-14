@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../../services/users.service';
 import { Artikal } from '../../models/artikal';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
+
+import { Router} from '@angular/router';
 @Component({
   templateUrl: './updateProfile.component.html',
   styleUrls: ['./updateProfile.component.css'],
@@ -21,7 +23,7 @@ export class UpdateProfileComponent implements OnInit, OnDestroy {
         proizvod:String='';
 
 
-constructor(private _userService: UserService, private route: ActivatedRoute) {
+constructor(private _userService: UserService, private route: ActivatedRoute,private router:Router) {
 
   this.korisnici=[];
 
@@ -43,8 +45,14 @@ this._userService.getUser(+localStorage.getItem('key')).subscribe(
 )
 
 
-  }
 
+  }
+  logout()
+  {
+    localStorage.setItem('key', '');
+   localStorage.setItem('uloga', '');
+   this.router.navigateByUrl('/registracija');
+  }
   updateUser(){
 
     if(this.ime=='' || this.prezime=='')

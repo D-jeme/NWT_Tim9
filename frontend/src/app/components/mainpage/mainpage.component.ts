@@ -21,6 +21,12 @@ artikli:Array<any>
  console.log("Rutaa",id);
 
 }
+logout()
+{
+  localStorage.setItem('key', '');
+ localStorage.setItem('uloga', '');
+ this.router.navigateByUrl('/registracija');
+}
 
   ngOnInit() {
     console.log("spasio",localStorage.getItem('key'));

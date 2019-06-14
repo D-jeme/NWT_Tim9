@@ -68,8 +68,12 @@ constructor(private _userService: UserService, private router: Router,private _a
         //   this.popup.show();
      }
 
-
-
+logout()
+{
+  localStorage.setItem('key', '');
+ localStorage.setItem('uloga', '');
+ this.router.navigateByUrl('/registracija');
+}
 
 
   ngOnInit() {
@@ -111,7 +115,7 @@ this.messageUspjesno='Uspješno ste dodali novi artikal.';
 
     }
 
-  /*  deleteUser() {
+/*  deleteUser() {
         if(this.email=='')
         {
           this.errorMessage='Molimo popunite polje za email!';
@@ -124,8 +128,8 @@ this.messageUspjesno='Uspješno ste dodali novi artikal.';
         //else {this.errorMessage='Unijeli ste artikal sa već postojećim nazivom!'; console.log("U ELSE-u sam",this.messageUspjesno); console.log("U ELSE-u sam",this.errorMessage);}
   this.messageUspjesno='Uspješno ste obrisali korisnika.';
 
-}*/
-
+}
+*/
 
     /*this.errorMessage='';
     if(this.ime=='' || this.prezime=='' || this.email=='' || this.emailFakultet=='' || this.brojTelefona=='' ||

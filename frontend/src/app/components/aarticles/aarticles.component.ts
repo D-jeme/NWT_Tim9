@@ -21,7 +21,12 @@ artikli:Array<any>
  console.log("Rutaa",id);
 
 }
-
+logout()
+{
+  localStorage.setItem('key', '');
+ localStorage.setItem('uloga', '');
+ this.router.navigateByUrl('/registracija');
+}
   ngOnInit() {
 
     if(localStorage.getItem('uloga')!='admin') this.router.navigateByUrl('/registracija');
