@@ -94,8 +94,13 @@ constructor(private _userService: UserService,private _registracijaService:Regis
   }  console.log("ima li te");
     this.noviLogin=new OsobaLogin(this.email_login, this.password_login);
     this._registracijaService.login(this.noviLogin).subscribe(data=>{
+
       localStorage.setItem('key', data.data.id);
+      if(data.data.role!=null)
      localStorage.setItem('uloga', data.data.role.tip);
+     else
+    localStorage.setItem('uloga', 'user');
+
       console.log("sad",data);
       if(data.data==null)   this.errorMessage='Email ili password nisu validni';
       if(data.data.role!=null){ this.messageUspjesno='Uspješno ste se ulogovali';   console.log('Ispiiis', this.messageUspjesno);  this.router.navigateByUrl('/aarticles');}///ovdje dodaj admin rutu
