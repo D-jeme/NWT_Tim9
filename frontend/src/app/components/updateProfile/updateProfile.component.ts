@@ -54,7 +54,7 @@ this._userService.getUser(+localStorage.getItem('key')).subscribe(
       return;
     }
 
-    this._userService.updateUser(this.id, this.ime,this.prezime,this.email).subscribe(data=>{console.log("vraceno",data); this.proizvod=data.MESSAGE;})
+    this._userService.updateUser(+localStorage.getItem('key'), this.ime,this.prezime,this.email).subscribe(data=>{console.log("vraceno",data); this.proizvod=data.MESSAGE;})
   }
 
   ngOnDestroy(){

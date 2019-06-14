@@ -73,7 +73,7 @@ constructor(private _userService: UserService, private router: Router,private _a
 
 
   ngOnInit() {
-    if(localStorage.getItem('uloga')=='admin') this.router.navigateByUrl('/registracija');
+    if(localStorage.getItem('uloga')!='admin') this.router.navigateByUrl('/registracija');
     this._userService.getUsers().subscribe(data=>{
       this.korisnici=data;
       console.log("ovi su podaci",this.korisnici);
