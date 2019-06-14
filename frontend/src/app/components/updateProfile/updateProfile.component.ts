@@ -53,6 +53,18 @@ this._userService.getUser(+localStorage.getItem('key')).subscribe(
    localStorage.setItem('uloga', '');
    this.router.navigateByUrl('/registracija');
   }
+
+  openMyProfile()
+{
+   this.router.navigateByUrl('/updateProfile');
+}
+
+homePAge()
+{
+  this.router.navigateByUrl('/');
+}
+
+
   updateUser(){
 
     if(this.ime=='' || this.prezime=='')

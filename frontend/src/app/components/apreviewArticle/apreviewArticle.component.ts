@@ -77,6 +77,11 @@ this._articlesService.getArticle(this.id).subscribe(
     this._articlesService.updateAr(this.id,this.kratki_tekst,this.dugi_tekst,this.cijena,this.popust).subscribe(data=>{console.log("vraceno",data); this.proizvod=data.MESSAGE;})
   }
 
+  homePage()
+  {
+    this.router.navigateByUrl('/');
+  }
+
   ngOnDestroy(){
 
 }

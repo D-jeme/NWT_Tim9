@@ -21,12 +21,7 @@ artikli:Array<any>
  console.log("Rutaa",id);
 
 }
-logout()
-{
-  localStorage.setItem('key', '');
- localStorage.setItem('uloga', '');
- this.router.navigateByUrl('/registracija');
-}
+
   ngOnInit() {
 
     if(localStorage.getItem('uloga')!='admin') this.router.navigateByUrl('/registracija');
@@ -40,6 +35,24 @@ logout()
     })
   }
 
+  logout()
+  {
+    localStorage.setItem('key', '');
+   localStorage.setItem('uloga', '');
+   this.router.navigateByUrl('/registracija');
+ }
+
+
+   homePage()
+   {
+     this.router.navigateByUrl('/');
+   }
+
+
+  openMyProfile()
+{
+   this.router.navigateByUrl('/updateProfile');
+}
   getArticles(){
     console.log("kliknuo");
     this._articlesService.getArticles().subscribe(data=>{

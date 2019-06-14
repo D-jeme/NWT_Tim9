@@ -50,7 +50,11 @@ logout()
   openLogin(){
       this.router.navigateByUrl('/registracija');
   }
-
+  
+  openMyProfile()
+{
+   this.router.navigateByUrl('/updateProfile');
+}
 
 
 }
