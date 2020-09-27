@@ -45,23 +45,28 @@ console.log(body);
 
 login(clan: OsobaLogin){
   console.log("ima li te ", clan);
-  var body = JSON.stringify(clan);
-  var headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-  //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
-console.log(body);
-return this._http.post(this.url + '/rest/users/login',
-  body,
-    {
-      headers: headers
-    }
-  ).map(
-    data => {
-        console.log('login podaci',data);
-      //  localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
-        return data.json();
-      },error=>{return null;}
-
-  );
+  if (clan.email === "korisnik" && clan.newPassword_url === "korisnik") {
+    console.log("tacan pass", clan.email);
+  } else {
+    console.log("nije tacan pass", clan.newPassword_url);
+  }
+//   var body = JSON.stringify(clan);
+//   var headers = new Headers();
+//   headers.append('Content-Type', 'application/json');
+//   //headers.append('authorization', 'Bearer ' + localStorage.getItem("currentUser").token);
+// console.log(body);
+// return this._http.post(this.url + '/rest/users/login',
+//   body,
+//     {
+//       headers: headers
+//     }
+//   ).map(
+//     data => {
+//         console.log('login podaci',data);
+//       //  localStorage.setItem('currentUser', JSON.stringify({ token: data.token, clan: data.clan }));
+//         return data.json();
+//       },error=>{return null;}
+//
+//   );
 }
 }

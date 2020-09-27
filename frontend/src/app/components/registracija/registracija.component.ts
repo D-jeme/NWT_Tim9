@@ -83,9 +83,10 @@ constructor(private _userService: UserService,private _registracijaService:Regis
       this.novi=new Osoba(this.ime, this.prezime, this.email, this.password, this.url_slike);
       console.log("korisnik moj je",this.novi);
       this._registracijaService.prijava(this.novi);
+      console.log("ZZZZZ");
 
       this.errorMessage="";
-  this.router.navigateByUrl('/');
+  this.router.navigateByUrl('/mainpage');
       //this.messageUspjesno='Uspjesno!';
     }
 
@@ -99,28 +100,31 @@ constructor(private _userService: UserService,private _registracijaService:Regis
     return;
   }  console.log("ima li te");
     this.noviLogin=new OsobaLogin(this.email_login, this.password_login);
-    this._registracijaService.login(this.noviLogin).subscribe(data=>{
+          this.router.navigateByUrl('/');
+    // this._registracijaService.login(this.noviLogin).subscribe(data=>{
+    //
+    //   localStorage.setItem('key', data.data.id);
+    //   if(data.data.role!=null)
+    //  localStorage.setItem('uloga', data.data.role.tip);
+    //  else
+    // localStorage.setItem('uloga', 'user');
+    //
+    //   console.log("sad",data);
+    //   if(data.data==null)   this.errorMessage='Email ili password nisu validni';
+    //   if(data.data.role!=null){ this.messageUspjesno='Uspješno ste se ulogovali';   console.log('Ispiiis', this.messageUspjesno);  this.router.navigateByUrl('/aarticles');}///ovdje dodaj admin rutu
+    //   else { this.messageUspjesno='Uspješno ste se ulogovali 1'; console.log('Ispiiis', this.messageUspjesno); this.router.navigateByUrl('/');
+    //   console.log("podaci o prijavi",data.data.role);}
+    //
+    // });
 
-      localStorage.setItem('key', data.data.id);
-      if(data.data.role!=null)
-     localStorage.setItem('uloga', data.data.role.tip);
-     else
-    localStorage.setItem('uloga', 'user');
+    // setTimeout(()=>{
+    //
+    //   this.errorMessage='Email ili password nisu validni';
+    //
+    // },500)
+    // console.log('Ispiiis', this.messageUspjesno);
 
-      console.log("sad",data);
-      if(data.data==null)   this.errorMessage='Email ili password nisu validni';
-      if(data.data.role!=null){ this.messageUspjesno='Uspješno ste se ulogovali';   console.log('Ispiiis', this.messageUspjesno);  this.router.navigateByUrl('/aarticles');}///ovdje dodaj admin rutu
-      else { this.messageUspjesno='Uspješno ste se ulogovali 1'; console.log('Ispiiis', this.messageUspjesno); this.router.navigateByUrl('/');
-      console.log("podaci o prijavi",data.data.role);}
-
-    });
-
-    setTimeout(()=>{
-
-      this.errorMessage='Email ili password nisu validni';
-
-    },500)
-    console.log('Ispiiis', this.messageUspjesno);
+      // this.router.navigateByUrl('/');
 
 }
 

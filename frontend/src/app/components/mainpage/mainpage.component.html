@@ -8,7 +8,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <div>
-        
+
             <i class="material-icons" style="font-size:40px;color:teal" (click)="openLogin()">account_circle</i>
             <i class="material-icons" style="font-size:40px;color:teal" (click)="logout()">exit_to_app</i>
           </div>
@@ -21,7 +21,7 @@
 
   <div class="okolo">
 <figure  *ngFor="let artikal of artikli" class="vijest">
-  <img src={{artikal.pictures.slika}} class="imgs" >
+  <img  class="imgs" >
   <div class="datum" *ngIf="artikal.popust>0"><span class="dan" >{{artikal.popust}}%</span>
     <span>sniženo</span></div>
   <figcaption>
@@ -29,7 +29,7 @@
     <h3>{{artikal.naziv}}</h3>
     <span class="cijena">{{artikal.cijena}}</span></div>
     <p> {{artikal.kratki_tekst}} </p>
-    <button (click)="onClick(artikal.broj)">Procitaj vise</button>
+    <button (click)="onClick(artikal.id)">Procitaj vise</button>
   </figcaption><a href="#"></a>
 </figure>
 </div>

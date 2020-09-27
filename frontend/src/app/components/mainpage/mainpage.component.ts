@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ArticlesService} from '../../services/articles.service';
+import {Artikal} from '../../models/artikal'
+import { PRODUCTS  } from "../../products";
 import { Router} from '@angular/router';
 
 @Component({
@@ -10,17 +12,18 @@ import { Router} from '@angular/router';
 })
 export class MainpageComponent implements OnInit {
 
-artikli:Array<any>
+artikli:Array<Artikal>
+// a1 = new Artikal(1, "amina", "amina", "amina", 400, 25);
 
   constructor(private _articlesService: ArticlesService, private router: Router) {
     this.artikli=[];
    }
 
    onClick (id) {
- this.router.navigate(['/previewArticle', id]);
- console.log("Rutaa",id);
+     this.router.navigate(['/previewArticle', id]);
+     console.log("Rutaa",id);
+   }
 
-}
 logout()
 {
   localStorage.setItem('key', '');
@@ -32,7 +35,9 @@ logout()
     console.log("spasio",localStorage.getItem('key'));
 
       console.log("uloga",localStorage.getItem('uloga'));
-     console.log("kliknuo");
+     console.log("kliknuo", PRODUCTS);
+     this.artikli = PRODUCTS;
+     // this.artikli.push(this.a1);
     this._articlesService.getArticles().subscribe(data=>{
       this.artikli=data;
       console.log("ovi su podaci",this.artikli);
@@ -54,7 +59,7 @@ logout()
   openPanel(){
     this.router.navigateByUrl('/dodajsliku');
   }
-  
+
   openMyProfile()
 {
    this.router.navigateByUrl('/updateProfile');

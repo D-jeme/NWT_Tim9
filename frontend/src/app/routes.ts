@@ -9,6 +9,7 @@ import {PreviewArticleComponent} from './components/previewArticle/previewArticl
 import {AdminPreviewArticleComponent} from './components/apreviewArticle/apreviewArticle.component';
 import { AdminArticlesComponent } from './components/aarticles/aarticles.component';
 import { UpdateProfileComponent } from './components/updateProfile/updateProfile.component';
+import { MainpictureComponent } from './components/mainpicture/mainpicture.component';
 
 
 
@@ -27,6 +28,7 @@ const app_routes:Routes = [
             { path:'apreviewArticle/:id', component: AdminPreviewArticleComponent },
             {path:'updateProfile',component:UpdateProfileComponent},
             { path:'updateProfile/:id', component: UpdateProfileComponent },
+            { path:'mainpicture', component: MainpictureComponent },
 
 
 

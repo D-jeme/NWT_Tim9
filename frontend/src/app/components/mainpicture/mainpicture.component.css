@@ -54,9 +54,10 @@ border: 2px solid #fff;
 margin: 90px;
 text-decoration: none;
 transition-duration: 0.9s;
-
-
 }
+
+
+
 .button:hover {
   background: #fff;
   color: grey;
@@ -98,6 +99,37 @@ padding-top: 80px;
 
 }
 
+.sadrzaj {
+  padding: 5%;
+  padding-top: 3%;
+}
+
+.naslov {
+  padding-left: 45%;
+  margin: 0;
+  padding-bottom: 80px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 20px;
+}
+
+.centered-button {
+  display: block;
+margin: auto;
+}
+
+td {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
 
 *:before,*:after{
   box-sizing: border-box;

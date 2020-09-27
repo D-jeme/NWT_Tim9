@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ArticlesService } from '../../services/articles.service';
-import { Artikal } from '../../models/artikal';
+import {Artikal} from '../../models/artikal'
+import { PRODUCTS  } from "../../products";
+import { CHART_ARTICLES } from "../../chart";
 import { ActivatedRoute } from '@angular/router';
 
 import { Router} from '@angular/router';
@@ -18,8 +20,8 @@ export class PreviewArticleComponent implements OnInit, OnDestroy {
     naziv: String;
     kratki_tekst: String;
     dugi_tekst: String;
-    cijena: any;
-    popust: Number;
+    cijena: number;
+    popust: number;
     stara_cijena: any;
     slika: String;
 
@@ -39,29 +41,68 @@ constructor(private _articlesService: ArticlesService, private route: ActivatedR
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-       this.id = params['id'];
- console.log("param*********",this.id);
+    this.id = params['id'];
+    console.log("param*********",this.id);
+  });
 
-});
+  PRODUCTS.forEach(product => {
+    if(product.id == this.id) {
+      console.log("Pronadjen ID ", product.naziv);
 
-this._articlesService.getArticle(this.id).subscribe(
-  data=>{
-    console.log("ovo je",data);
-
-    this.naziv=data.naziv;
-    this.kratki_tekst=data.kratki_tekst;
-    this.dugi_tekst=data.dugi_tekst;
-    this.cijena=data.cijena;
-    this.popust=data.popust;
-    this.slika=data.pictures.slika;
-    this.stara_cijena=(data.cijena/(100-data.popust)*100).toFixed(2);
+      this.naziv=product.naziv;
+      this.kratki_tekst=product.kratki_tekst;
+      this.dugi_tekst=product.dugi_tekst;
+      this.cijena=product.cijena;
+      this.popust=product.popust;
+      // this.slika=product.pictures.slika;
+      this.stara_cijena=(product.cijena/(100-product.popust)*100).toFixed(2);
+    }
+  });
   }
+
+  print(id) {
+    let exists = false;
+    let chosenArticle = {} as Artikal;
+    console.log("Id jee", id);
+
+    PRODUCTS.forEach(element => {
+      if(element.id == id) {
+        chosenArticle = element;
+      }
+    });
+
+    CHART_ARTICLES.forEach(article => {
+      if(article.id == id) {
+        exists = true;
+      }
+    });
+
+
+    if (!exists) {
+      CHART_ARTICLES.push(chosenArticle);
+      } else {
+      let objIndex = CHART_ARTICLES.findIndex((obj => obj.id == id));
+      CHART_ARTICLES[objIndex].kolicina += 1;
+      console.log("After update: ", CHART_ARTICLES[objIndex])
+
+    }
+
+       this.router.navigateByUrl('/mainpicture');
+
+  }
+
+// this._articlesService.getArticle(this.id).subscribe(
+//   data=>{
+//     console.log("ovo je",data);
+
+
+  // }
 
 
 
 //  this._articlesService.postaviStaruCijenu(Number(this.stara_cijena));
 
-)
+// )
 
 /*
     this._articlesService.postaviIdArtikla(String(this.id));
@@ -95,7 +136,7 @@ this.popust=this.artikli.popust;
          else this.izvjestaj=false;
     }
   );*/
-  }
+
 
   openMyProfile()
 {
