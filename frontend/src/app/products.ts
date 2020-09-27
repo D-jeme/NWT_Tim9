@@ -1,9 +1,9 @@
 import {Artikal} from "./models/artikal"
 
 export const PRODUCTS: Artikal[] = [
-    {"id": 1, "naziv": "Dell xps1amina", "kratki_tekst": "Super", "dugi_tekst": "Vrh laptop", "cijena": 1500, "popust": 30, "kolicina": 1},
-    {"id": 2, "naziv": "Dell xps2", "kratki_tekst": "Super", "dugi_tekst": "Vrh laptop", "cijena": 1500, "popust": 30, "kolicina": 1},
-    {"id": 3, "naziv": "Dell xps3", "kratki_tekst": "Super", "dugi_tekst": "Vrh laptop", "cijena": 1500, "popust": 30, "kolicina": 1},
-    {"id": 4, "naziv": "Dell xps4", "kratki_tekst": "Super", "dugi_tekst": "Vrh laptop", "cijena": 1500, "popust": 30, "kolicina": 1},
-    {"id": 5, "naziv": "Dell xps5", "kratki_tekst": "Super", "dugi_tekst": "Vrh laptop", "cijena": 1500, "popust": 30, "kolicina": 1}
+    {"id": 1, "naziv": "Dell xps 13", "kratki_tekst": "10th Intel® Core™ i5-1035G1   Windows 10 Home \n Intel® UHD Graphics \n 8GB 3733MH \n 256GB M.2 PCIe ", "dugi_tekst": "10th Intel® Core™ i5-1035G1   Windows 10 Home \n Intel® UHD Graphics \n 8GB 3733MH \n 256GB M.2 PCIe ", "cijena": 2300, "popust": 30, "kolicina": 1, "img":"../../assets/images/download.jpg" },
+    {"id": 2, "naziv": "Dell xps 15", "kratki_tekst": "10th Intel® Core™ i7-1035G1   Windows 10 Home \n Intel® UHD Graphics \n 8GB 3733MH \n 256GB M.2 PCIe ", "dugi_tekst": "10th Intel® Core™ i7-1035G1   Windows 10 Home \n Intel® UHD Graphics \n 8GB 3733MH \n 256GB M.2 PCIe ", "cijena": 2850, "popust": 30, "kolicina": 1,"img":"../../assets/images/download1.jpg" },
+    {"id": 3, "naziv": "Dell xps 13", "kratki_tekst": "10th Intel® Core™ i5-1035G1   Windows 10 Home \n Intel® UHD Graphics \n 8GB 3733MH \n 256GB M.2 PCIe ", "dugi_tekst": "10th Intel® Core™ i5-1035G1   Windows 10 Home \n Intel® UHD Graphics \n 8GB 3733MH \n 256GB M.2 PCIe ", "cijena": 2300, "popust": 30, "kolicina": 1,"img":"../../assets/images/download.jpg" },
+    {"id": 4, "naziv": "Dell xps 15", "kratki_tekst": "10th Intel® Core™ i7-1035G1   Windows 10 Home \n Intel® UHD Graphics \n 8GB 3733MH \n 256GB M.2 PCIe ", "dugi_tekst": "10th Intel® Core™ i7-1035G1   Windows 10 Home \n Intel® UHD Graphics \n 8GB 3733MH \n 256GB M.2 PCIe ", "cijena": 2850, "popust": 30, "kolicina": 1,"img":"../../assets/images/download1.jpg" },
+    {"id": 5, "naziv": "Dell xps 13", "kratki_tekst": "10th Intel® Core™ i5-1035G1   Windows 10 Home \n Intel® UHD Graphics \n 8GB 3733MH \n 256GB M.2 PCIe ", "dugi_tekst": "10th Intel® Core™ i5-1035G1   Windows 10 Home \n Intel® UHD Graphics \n 8GB 3733MH \n 256GB M.2 PCIe ", "cijena": 2300, "popust": 30, "kolicina": 1,"img":"../../assets/images/download.jpg" }
   ]

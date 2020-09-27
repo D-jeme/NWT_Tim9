@@ -24,7 +24,7 @@ export class PreviewArticleComponent implements OnInit, OnDestroy {
     cijena: number;
     popust: number;
     stara_cijena: any;
-    slika: String;
+    img: String;
     nizArtikala: Artikal[];
 
 
@@ -62,6 +62,7 @@ constructor(private _articlesService: ArticlesService, private route: ActivatedR
       this.dugi_tekst=product.dugi_tekst;
       this.cijena=product.cijena;
       this.popust=product.popust;
+      this.img=product.img;
       // this.slika=product.pictures.slika;
       this.stara_cijena=(product.cijena/(100-product.popust)*100).toFixed(2);
     }
