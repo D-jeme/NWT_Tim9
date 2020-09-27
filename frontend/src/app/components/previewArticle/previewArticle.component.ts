@@ -102,6 +102,10 @@ homePage()
   this.router.navigateByUrl('/all');
 }
 
+cartPreview() {
+  this.router.navigateByUrl('/mainpicture')
+}
+
   ngOnDestroy(){
 
 }

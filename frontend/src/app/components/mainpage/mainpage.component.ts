@@ -49,5 +49,9 @@ logout()
    this.router.navigateByUrl('/updateProfile');
 }
 
+  cartPreview() {
+     this.router.navigateByUrl('/mainpicture');
+  }
+
 
 }
