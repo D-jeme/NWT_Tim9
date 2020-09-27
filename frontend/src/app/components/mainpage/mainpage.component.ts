@@ -13,7 +13,6 @@ import { Router} from '@angular/router';
 export class MainpageComponent implements OnInit {
 
 artikli:Array<Artikal>
-// a1 = new Artikal(1, "amina", "amina", "amina", 400, 25);
 
   constructor(private _articlesService: ArticlesService, private router: Router) {
     this.artikli=[];
@@ -21,39 +20,24 @@ artikli:Array<Artikal>
 
    onClick (id) {
      this.router.navigate(['/previewArticle', id]);
-     console.log("Rutaa",id);
    }
 
 logout()
 {
   localStorage.setItem('key', '');
  localStorage.setItem('uloga', '');
- this.router.navigateByUrl('/registracija');
+ this.router.navigateByUrl('/');
 }
 
   ngOnInit() {
-    console.log("spasio",localStorage.getItem('key'));
-
-      console.log("uloga",localStorage.getItem('uloga'));
-     console.log("kliknuo",JSON.stringify(PRODUCTS));
      this.artikli = PRODUCTS;
-     // this.artikli.push(this.a1);
-    this._articlesService.getArticles().subscribe(data=>{
-      this.artikli=data;
-      console.log("ovi su podaci",this.artikli);
-    })
   }
 
   getArticles(){
-    console.log("kliknuo");
-    this._articlesService.getArticles().subscribe(data=>{
-      this.artikli=data;
-      console.log("ovi su podaci",this.artikli);
-    })
   }
 
   openLogin(){
-      this.router.navigateByUrl('/registracija');
+      this.router.navigateByUrl('/');
   }
 
   openPanel(){

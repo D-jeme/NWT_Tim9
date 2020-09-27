@@ -18,9 +18,9 @@ import { MainpictureComponent } from './components/mainpicture/mainpicture.compo
 
 const app_routes:Routes = [
 
-  { path:'', component: MainpageComponent },
+  { path:'all', component: MainpageComponent },
   { path:'aarticles', component: AdminArticlesComponent},
-    { path:'registracija', component: RegistracijaComponent},
+    { path:'', component: RegistracijaComponent},
     {path:'dodajsliku',component:DodajslikuComponent},
         {path:'previewArticle',component:PreviewArticleComponent},
           { path:'previewArticle/:id', component: PreviewArticleComponent },

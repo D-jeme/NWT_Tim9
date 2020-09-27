@@ -20,67 +20,43 @@ export class UpdateProfileComponent implements OnInit, OnDestroy {
     email: String='';
     errorMessage: String='';
     messageUspjesno: String='';
-        proizvod:String='';
+    proizvod: String='';
 
 
 constructor(private _userService: UserService, private route: ActivatedRoute,private router:Router) {
-
   this.korisnici=[];
-
  }
 
-
   ngOnInit() {
-
-
-this._userService.getUser(+localStorage.getItem('key')).subscribe(
-  data=>{
-    console.log("ovo je",data);
-
-    this.ime=data.ime;
-    this.prezime=data.prezime;
-    this.email=data.email;
   }
 
-)
-
-
-
-  }
   logout()
   {
     localStorage.setItem('key', '');
-   localStorage.setItem('uloga', '');
-   this.router.navigateByUrl('/registracija');
+    localStorage.setItem('uloga', '');
+    this.router.navigateByUrl('/');
   }
 
   openMyProfile()
-{
-   this.router.navigateByUrl('/updateProfile');
-}
+  {
+     this.router.navigateByUrl('/updateProfile');
+  }
 
-homePAge()
-{
-  this.router.navigateByUrl('/');
-}
-
+  homePAge()
+  {
+    this.router.navigateByUrl('/all');
+  }
 
   updateUser(){
-
     if(this.ime=='' || this.prezime=='')
     {
       this.errorMessage='Molimo popunite sva polja!';
       this.messageUspjesno='';
       return;
     }
-
-    this._userService.updateUser(+localStorage.getItem('key'), this.ime,this.prezime,this.email).subscribe(data=>{console.log("vraceno",data); this.proizvod=data.MESSAGE;})
   }
 
   ngOnDestroy(){
-
-}
-
-
+  }
 
 }

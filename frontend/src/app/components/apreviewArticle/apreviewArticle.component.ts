@@ -36,7 +36,7 @@ constructor(private _articlesService: ArticlesService, private route: ActivatedR
  {
    localStorage.setItem('key', '');
   localStorage.setItem('uloga', '');
-  this.router.navigateByUrl('/registracija');
+  this.router.navigateByUrl('/');
  }
 
 
@@ -44,23 +44,8 @@ constructor(private _articlesService: ArticlesService, private route: ActivatedR
     if(localStorage.getItem('uloga')!='admin') this.router.navigateByUrl('/registracija');
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id'];
- console.log("param*********",this.id);
 
 });
-
-this._articlesService.getArticle(this.id).subscribe(
-  data=>{
-    console.log("ovo je",data);
-
-    this.naziv=data.naziv;
-    this.kratki_tekst=data.kratki_tekst;
-    this.dugi_tekst=data.dugi_tekst;
-    this.cijena=data.cijena;
-    this.popust=data.popust;
-    this.slika=data.pictures.slika;
-  }
-
-)
 
 
   }
@@ -73,18 +58,16 @@ this._articlesService.getArticle(this.id).subscribe(
       this.messageUspjesno='';
       return;
     }
-
-    this._articlesService.updateAr(this.id,this.kratki_tekst,this.dugi_tekst,this.cijena,this.popust).subscribe(data=>{console.log("vraceno",data); this.proizvod=data.MESSAGE;})
   }
 
   homePage()
   {
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/all');
   }
 
   ngOnDestroy(){
 
-}
+  }
 
 
 

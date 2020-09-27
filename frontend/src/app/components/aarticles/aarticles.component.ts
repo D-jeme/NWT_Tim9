@@ -25,14 +25,6 @@ artikli:Array<any>
   ngOnInit() {
 
     if(localStorage.getItem('uloga')!='admin') this.router.navigateByUrl('/registracija');
-    console.log("spasio",localStorage.getItem('key'));
-
-      console.log("uloga",localStorage.getItem('uloga'));
-    console.log("kliknuo");
-    this._articlesService.getArticles().subscribe(data=>{
-      this.artikli=data;
-      console.log("ovi su podaci",this.artikli);
-    })
   }
 
   openPanel(){
@@ -43,13 +35,13 @@ artikli:Array<any>
   {
     localStorage.setItem('key', '');
    localStorage.setItem('uloga', '');
-   this.router.navigateByUrl('/registracija');
+   this.router.navigateByUrl('/');
  }
 
 
    homePage()
    {
-     this.router.navigateByUrl('/');
+     this.router.navigateByUrl('/all');
    }
 
 
@@ -57,12 +49,5 @@ artikli:Array<any>
 {
    this.router.navigateByUrl('/updateProfile');
 }
-  getArticles(){
-    console.log("kliknuo");
-    this._articlesService.getArticles().subscribe(data=>{
-      this.artikli=data;
-      console.log("ovi su podaci",this.artikli);
-    })
-  }
 
 }
