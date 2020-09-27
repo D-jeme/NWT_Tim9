@@ -16,27 +16,27 @@
 
 <div class="sadrzaj">
     <h2 class="naslov">Chart</h2>
-    <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Article</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Total</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let artikal of artikli">
-    <tr>
-      <th scope="row">{{artikal.id}}</th>
-      <td>{{artikal.naziv}}</td>
-      <td>{{artikal.cijena}}</td>
-      <td>{{artikal.kolicina}}</td>
-      <td>{{artikal.cijena * artikal.kolicina}}</td>
-      <button type="button" class="btn btn-danger centered-button" (click)="removeItem(artikal)">Remove</button>
-    </tr>
-  </tbody>
+    <table class="table table-striped" *ngIf="!emptyArray">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Article</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let artikal of nizArtikala">
+      <tr>
+        <th scope="row">{{artikal.id}}</th>
+        <td>{{artikal.naziv}}</td>
+        <td>{{artikal.cijena}}</td>
+        <td>{{artikal.kolicina}}</td>
+        <td>{{artikal.cijena * artikal.kolicina}}</td>
+        <button type="button" class="btn btn-danger centered-button" (click)="removeItem(artikal)">Remove</button>
+      </tr>
+    </tbody>
 </table>
 
 <div class="error" *ngIf="errorMessage!=''">{{errorMessage}}</div>

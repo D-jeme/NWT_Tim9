@@ -42,7 +42,10 @@ constructor(private _userService: UserService,private _registracijaService:Regis
     this._userService.getUsers().subscribe(data=>{
       this.korisnici=data;
       console.log("ovi su podaci",this.korisnici);
+
+
     })
+          console.log("Local storage", localStorage);
   }
 
 
@@ -116,7 +119,6 @@ constructor(private _userService: UserService,private _registracijaService:Regis
         if (USERS[objIndex].password == this.password_login) {
           console.log("2222", this.password_login);
           console.log("2222-2", USERS[objIndex]);
-
           this.router.navigateByUrl('/');
 
         } else {

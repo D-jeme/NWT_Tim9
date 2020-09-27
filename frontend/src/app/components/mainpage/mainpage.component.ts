@@ -35,7 +35,7 @@ logout()
     console.log("spasio",localStorage.getItem('key'));
 
       console.log("uloga",localStorage.getItem('uloga'));
-     console.log("kliknuo", PRODUCTS);
+     console.log("kliknuo",JSON.stringify(PRODUCTS));
      this.artikli = PRODUCTS;
      // this.artikli.push(this.a1);
     this._articlesService.getArticles().subscribe(data=>{

@@ -25,6 +25,7 @@ export class PreviewArticleComponent implements OnInit, OnDestroy {
     popust: number;
     stara_cijena: any;
     slika: String;
+    nizArtikala: Artikal[];
 
 
 constructor(private _articlesService: ArticlesService, private route: ActivatedRoute,private router:Router) {
@@ -44,6 +45,12 @@ constructor(private _articlesService: ArticlesService, private route: ActivatedR
     this.sub = this.route.params.subscribe(params => {
     this.id = params['id'];
     console.log("param*********",this.id);
+
+    // localStorage.setItem("charts", JSON.stringify(CHART_ARTICLES));
+    console.log("Local storage 2", localStorage);
+
+    this.nizArtikala = JSON.parse(localStorage.getItem("charts")) as Artikal[];
+
   });
 
   PRODUCTS.forEach(product => {
@@ -72,7 +79,7 @@ constructor(private _articlesService: ArticlesService, private route: ActivatedR
       }
     });
 
-    CHART_ARTICLES.forEach(article => {
+    this.nizArtikala.forEach(article => {
       if(article.id == id) {
         exists = true;
       }
@@ -80,14 +87,14 @@ constructor(private _articlesService: ArticlesService, private route: ActivatedR
 
 
     if (!exists) {
-      CHART_ARTICLES.push(chosenArticle);
+      this.nizArtikala.push(chosenArticle);
       } else {
-      let objIndex = CHART_ARTICLES.findIndex((obj => obj.id == id));
-      CHART_ARTICLES[objIndex].kolicina += 1;
-      console.log("After update: ", CHART_ARTICLES[objIndex])
+      let objIndex = this.nizArtikala.findIndex((obj => obj.id == id));
+      this.nizArtikala[objIndex].kolicina += 1;
+      console.log("After update: ", this.nizArtikala[objIndex])
 
     }
-
+      localStorage.setItem("charts", JSON.stringify(this.nizArtikala))
        this.router.navigateByUrl('/mainpicture');
 
   }
@@ -147,6 +154,7 @@ this.popust=this.artikli.popust;
 
 homePage()
 {
+    localStorage.setItem("charts", JSON.stringify(this.nizArtikala));
   this.router.navigateByUrl('/');
 }
   ngOnDestroy(){
