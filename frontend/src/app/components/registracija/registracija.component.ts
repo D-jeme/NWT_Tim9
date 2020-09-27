@@ -4,6 +4,8 @@ import { RegistracijaService } from '../../services/registracija.service';
 import { Osoba } from '../../models/osoba';
 import { OsobaLogin } from '../../models/osobaLogin';
 import { Router} from '@angular/router';
+import { USERS } from "../../users";
+
 @Component({
   templateUrl: './registracija.component.html',
   styleUrls: ['./registracija.component.css'],
@@ -82,25 +84,52 @@ constructor(private _userService: UserService,private _registracijaService:Regis
       console.log("ima li te");
       this.novi=new Osoba(this.ime, this.prezime, this.email, this.password, this.url_slike);
       console.log("korisnik moj je",this.novi);
-      this._registracijaService.prijava(this.novi);
+      USERS.push(this.novi);
+      // this._registracijaService.prijava(this.novi);
       console.log("ZZZZZ");
 
       this.errorMessage="";
-  this.router.navigateByUrl('/mainpage');
+      this.router.navigateByUrl('/mainpage');
       //this.messageUspjesno='Uspjesno!';
     }
 
     login(){
-      console.log("LOGOVII",this.errorMessage);
-          console.log("LOGOVII",this.messageUspjesno);
-  if(this.email_login=='' || this.password_login=='')
-  {
-    this.errorMessage='Molimo popunite sva polja!';
-    this.messageUspjesno='';
-    return;
-  }  console.log("ima li te");
-    this.noviLogin=new OsobaLogin(this.email_login, this.password_login);
+      console.log("LOGOVII",this.password_login);
+      console.log("LOGOVII", USERS);
+      if(this.email_login=='' || this.password_login=='')
+      {
+        this.errorMessage='Molimo popunite sva polja!';
+        this.messageUspjesno='';
+        return;
+      }
+      console.log("ima li te"), this.email_login;
+
+      let objIndex = USERS.findIndex((obj => obj.email == this.email_login));
+
+      console.log("Index korisnika je", objIndex);
+
+      if (objIndex < 0) {
+        this.errorMessage = "Invalid email or password";
+        console.log("111");
+
+      } else {
+        if (USERS[objIndex].password == this.password_login) {
+          console.log("2222", this.password_login);
+          console.log("2222-2", USERS[objIndex]);
+
           this.router.navigateByUrl('/');
+
+        } else {
+          console.log("333");
+
+            this.errorMessage = "Invalid email or password";
+        }
+      }
+
+    // this.noviLogin=new OsobaLogin(this.email_login, this.password_login);
+
+    }
+
     // this._registracijaService.login(this.noviLogin).subscribe(data=>{
     //
     //   localStorage.setItem('key', data.data.id);
@@ -126,7 +155,7 @@ constructor(private _userService: UserService,private _registracijaService:Regis
 
       // this.router.navigateByUrl('/');
 
-}
+
 
 
     /*this.errorMessage='';

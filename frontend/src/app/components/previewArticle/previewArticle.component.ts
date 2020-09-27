@@ -6,6 +6,7 @@ import { CHART_ARTICLES } from "../../chart";
 import { ActivatedRoute } from '@angular/router';
 
 import { Router} from '@angular/router';
+
 @Component({
   templateUrl: './previewArticle.component.html',
   styleUrls: ['./previewArticle.component.css'],
