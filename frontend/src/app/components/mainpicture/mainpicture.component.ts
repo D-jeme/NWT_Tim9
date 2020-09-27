@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Artikal} from '../../models/artikal'
 import { CHART_ARTICLES } from "../../chart";
 
+import { Router} from '@angular/router';
+
 @Component({
   selector: 'app-mainpicture',
   templateUrl: './mainpicture.component.html',
@@ -11,8 +13,9 @@ export class MainpictureComponent implements OnInit {
 
   artikli:Array<Artikal>
     errorMessage: String='';
+    messageUspjesno: String='';
 
-  constructor() {
+  constructor(private router:Router) {
     this.artikli = CHART_ARTICLES;
   }
 
@@ -31,6 +34,19 @@ export class MainpictureComponent implements OnInit {
       this.errorMessage='Uspješno ste uklonili artikal' + artikal.naziv;
     }
 
+  }
+
+  logout() {
+      this.router.navigateByUrl('/registracija');
+  }
+
+  getArticles()
+  {
+    this.router.navigateByUrl('/');
+  }
+
+  buyItems() {
+    this.messageUspjesno = "You have successfully finished buying process. Enjoy your products."
   }
 
 

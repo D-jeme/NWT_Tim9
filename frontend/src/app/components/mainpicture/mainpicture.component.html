@@ -7,8 +7,6 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <div>
-
-            <i class="material-icons" style="font-size:40px;color:teal" (click)="openLogin()">account_circle</i>
             <i class="material-icons" style="font-size:40px;color:teal" (click)="logout()">exit_to_app</i>
           </div>
         </li>
@@ -42,8 +40,12 @@
 </table>
 
 <div class="error" *ngIf="errorMessage!=''">{{errorMessage}}</div>
-<div class="poruka" *ngIf="messageUspjesno!=''">{{messageUspjesno}}</div>
 
-  <button (click)="print(id)">Buy items</button>
+  <!-- <button (click)="print(id)">Buy items</button> -->
 
   </div>
+
+
+  <button type="button" class="btn btn-success centered-button" (click)="buyItems()">Buy items</button>
+
+  <div class="poruka" *ngIf="messageUspjesno!=''">{{messageUspjesno}}</div>

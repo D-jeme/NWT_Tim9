@@ -105,9 +105,17 @@ padding-top: 80px;
 }
 
 .naslov {
-  padding-left: 45%;
+  /* padding-left: 50%; */
+  text-align: center;
   margin: 0;
   padding-bottom: 80px;
+}
+
+.poruka {
+  padding-top: 40px;
+  text-align: center;
+  color: green;
+  font-size: 16px;
 }
 
 .error {
@@ -120,7 +128,7 @@ padding-top: 80px;
 
 .centered-button {
   display: block;
-margin: auto;
+  margin: auto;
 }
 
 td {
