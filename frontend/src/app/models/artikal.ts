@@ -7,7 +7,8 @@ export class Artikal {
     popust: number;
     kolicina:number;
     img:String;
-  constructor(id: number, naziv: String, kratki_tekst: String, dugi_tekst: String, cijena: number, popust: number, kolicina: number,img:String) {
+    tip: String;
+  constructor(id: number, naziv: String, kratki_tekst: String, dugi_tekst: String, cijena: number, popust: number, kolicina: number,img:String, tip: String) {
     this.id = id;
     this.naziv=naziv;
     this.kratki_tekst=kratki_tekst;
@@ -16,6 +17,7 @@ export class Artikal {
     this.popust=popust;
     this.kolicina=kolicina;
     this.img=img;
+    this.tip=tip;
   }
 
 }

@@ -33,6 +33,19 @@ div.vijesti-screen:before{
   margin: auto;
 }
 
+.filter-nav {
+  padding-left: 40%;
+}
+
+.filter-heading {
+  font-size: 20px;
+  text-align: center;
+  color: #2e6da4;
+  font-weight: bold;
+  padding-bottom: 10px;
+  text-shadow: 2px 2px white;
+  padding-right: 5%;
+}
 
 figure.vijest {
   font-family: 'Raleway', Arial, sans-serif;

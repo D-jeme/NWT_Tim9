@@ -13,9 +13,11 @@ import { Router} from '@angular/router';
 export class MainpageComponent implements OnInit {
 
 artikli:Array<Artikal>
+filterArtikli:Array<Artikal>
 
   constructor(private _articlesService: ArticlesService, private router: Router) {
     this.artikli=[];
+    this.filterArtikli=[];
    }
 
    onClick (id) {
@@ -31,6 +33,7 @@ logout()
 
   ngOnInit() {
      this.artikli = PRODUCTS;
+     this.filterArtikli = PRODUCTS;
   }
 
   getArticles(){
@@ -52,6 +55,32 @@ logout()
   cartPreview() {
      this.router.navigateByUrl('/mainpicture');
   }
+
+
+getAllArticles() {
+  this.filterArtikli =  this.artikli;
+}
+
+getLaptops() {
+  this.filterArtikli = [] as Artikal[];
+  this.artikli.forEach(element => {
+    if (element.tip == "laptop") this.filterArtikli.push(element);
+  });
+
+}
+
+getMobilePhones() {
+  this.filterArtikli = [] as Artikal[];
+  this.artikli.forEach(element => {
+    if (element.tip == "mobitel") this.filterArtikli.push(element);
+  });
+}
+getCameras() {
+  this.filterArtikli = [] as Artikal[];
+  this.artikli.forEach(element => {
+    if (element.tip == "camera") this.filterArtikli.push(element);
+  });
+}
 
 
 }

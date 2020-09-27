@@ -17,23 +17,35 @@
       </ul>
   </div>
 </nav>
+
 <div class="sadrzaj">
 <div  class="vijesti-screen">
 
+  <div class="filter filter-draggable">
+    <div class="filter-heading">Filters</div>
+
   <div class="okolo">
-<figure  *ngFor="let artikal of artikli" class="vijest">
-  <img  class="imgs"  src={{artikal.img}} >
-  <div class="datum" *ngIf="artikal.popust>0"><span class="dan" >{{artikal.popust}}%</span>
-    <span>sniženo</span></div>
-  <figcaption>
-    <div class="naslov">
-    <h3>{{artikal.naziv}}</h3>
-    <span class="cijena">{{artikal.cijena}} KM</span></div>
-    <div class="kratki_tekst"> {{artikal.kratki_tekst}} </div>
-    <button class="dugme" (click)="onClick(artikal.id)">Procitaj vise</button>
-  </figcaption><a href="#"></a>
-</figure>
-</div>
+      <div class="filter-nav">
+        <button class="btn btn-success active" data-filter="" (click)="getAllArticles()">All</button>
+        <button class="btn btn-primary" data-filter="laptop" (click)="getLaptops()">Laptop</button>
+        <button class="btn btn-primary" data-filter="mobile" (click)="getMobilePhones()">Mobile phone</button>
+        <button class="btn btn-primary" data-filter="camera" (click)="getCameras()">Camera</button>
+      </div>
+
+      <figure  *ngFor="let artikal of filterArtikli" class="vijest">
+        <img  class="imgs"  src={{artikal.img}} >
+        <div class="datum" *ngIf="artikal.popust>0"><span class="dan" >{{artikal.popust}}%</span>
+          <span>SALE</span></div>
+        <figcaption>
+          <div class="naslov">
+          <h3>{{artikal.naziv}}</h3>
+          <span class="cijena">{{artikal.cijena}} KM</span></div>
+          <div class="kratki_tekst"> {{artikal.kratki_tekst}} </div>
+          <button class="dugme" (click)="onClick(artikal.id)">Read more</button>
+        </figcaption><a href="#"></a>
+      </figure>
+    </div>
+  </div>
 </div>
 </div>
 
