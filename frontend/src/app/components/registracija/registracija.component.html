@@ -45,7 +45,10 @@
             </div>
           </div>
           <div class="padding-left-20">
-            <input type="text" [(ngModel)]="cardType" name="cardType" placeholder="Card Type" required>
+            <select name="cars" id="cars">
+              <option value="volvo">Visa</option>
+              <option value="saab">Mastercard</option>
+            </select>
             <input type="text" [(ngModel)]="cardNumber" name="cardNumber" placeholder="Card Number" required>
             <input type="text" [(ngModel)]="securityCode" name="securityCode" placeholder="Security Code" required>
             <input type="text" [(ngModel)]="expirationDate" name="expirationDate" placeholder="Expiration Date" required>

@@ -51,7 +51,7 @@ constructor(private _userService: UserService,private _registracijaService:Regis
     this.router.navigateByUrl('/all');
   }
   print() {
-      if(this.ime=='' || this.prezime=='' || this.email=='' || this.password==''|| this.password2==''|| this.cardType=='' || this.cardNumber=='' || this.securityCode=='' || this.expirationDate == '' )
+      if(this.ime=='' || this.prezime=='' || this.email=='' || this.password==''|| this.password2=='' || this.cardNumber=='' || this.securityCode=='' || this.expirationDate == '' )
       {
         this.errorMessage='Please fill all fields!';
         this.messageUspjesno='';

@@ -222,6 +222,19 @@ input{
   text-shadow: 2px 2px white;
 }
 
+select{
+  border-top-width: 0px;
+   background: none;
+  border-bottom:2px solid #123b3f;
+  width:100%;
+  display:block;
+  margin:15px 10px;
+  font-size:1.6em;
+  color:#123b3f;
+  padding:5px;
+  text-shadow: 2px 2px white;
+}
+
 
 ::placeholder{
   color: white;
