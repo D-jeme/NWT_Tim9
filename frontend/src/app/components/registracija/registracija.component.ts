@@ -33,6 +33,7 @@ export class RegistracijaComponent implements OnInit {
   securityCode: String='';
   expirationDate: String='';
 
+
 constructor(private _userService: UserService,private _registracijaService:RegistracijaService, private router: Router) {
 
   this.korisnici=[];
@@ -51,6 +52,27 @@ constructor(private _userService: UserService,private _registracijaService:Regis
     this.router.navigateByUrl('/all');
   }
   print() {
+
+    var cardno = /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/;
+    var expiration = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/;
+
+
+    var expirationDateArray = this.expirationDate.split("/");
+    var month;
+    var year;
+    var validExpirationDateFormat = false;
+
+    if(expirationDateArray.length !== 2) {
+      validExpirationDateFormat = false;
+    } else if(/^-?\d+$/.test(expirationDateArray[0]) && /^-?\d+$/.test(expirationDateArray[1])) {
+        validExpirationDateFormat = true;
+        month = parseInt(expirationDateArray[0],10);
+        year = parseInt(expirationDateArray[1],10);
+      } else {
+        validExpirationDateFormat = false;
+      }
+
+
       if(this.ime=='' || this.prezime=='' || this.email=='' || this.password==''|| this.password2=='' || this.cardNumber=='' || this.securityCode=='' || this.expirationDate == '' )
       {
         this.errorMessage='Please fill all fields!';
@@ -72,11 +94,20 @@ constructor(private _userService: UserService,private _registracijaService:Regis
         this.errorMessage='Passwords are not maching!';
         this.messageUspjesno='';
         return;
-      }
+      } else if(!this.cardNumber.match(cardno)) {
+          this.errorMessage='Invalid card number. If entered number contains spaces, remove them!';
+          this.messageUspjesno='';
+          return;
+        } else if(!validExpirationDateFormat) {
+          this.errorMessage='Expiration date should be in format 11/22.'
+          return;
+        } else if(month<9 || month>12 || year<20 || year>30) {
+          this.errorMessage='Invalid expiration date!';
+          return;
+        }
       this.novi=new Osoba(this.ime, this.prezime, this.email, this.password, this.password2);
       USERS.push(this.novi);
       this.errorMessage="";
-      console.log("Users", USERS);
 
       this.router.navigateByUrl('/all');
     }
