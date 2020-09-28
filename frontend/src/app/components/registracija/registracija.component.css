@@ -12,6 +12,10 @@ option {
   color: black;
 }
 
+.flex-class {
+  display: flex;
+}
+
 .button2 {
   width: 100%;
   margin-left: 0px;
@@ -140,13 +144,24 @@ button:hover {
 .login{
   float: left;
   margin-top: 150px;
-  margin-left: 200px;
 }
 
-.registracija{
+.registracija {
   float:right;
 }
 
+.padding-left-20 {
+  padding-left: 10%;
+  padding-top: 14%
+}
+
+.padding-zero {
+  margin-top:0px!important;
+}
+
+.padding-form {
+  padding: 10px;
+}
 
 
 

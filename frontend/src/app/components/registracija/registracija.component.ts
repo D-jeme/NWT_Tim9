@@ -28,6 +28,10 @@ export class RegistracijaComponent implements OnInit {
   email_login: String='';
   password_login: String='';
   noviLogin: OsobaLogin;
+  cardType: String='';
+  cardNumber: String='';
+  securityCode: String='';
+  expirationDate: String='';
 
 constructor(private _userService: UserService,private _registracijaService:RegistracijaService, private router: Router) {
 
@@ -47,7 +51,7 @@ constructor(private _userService: UserService,private _registracijaService:Regis
     this.router.navigateByUrl('/all');
   }
   print() {
-      if(this.ime=='' || this.prezime=='' || this.email=='' || this.password==''|| this.url_slike=='')
+      if(this.ime=='' || this.prezime=='' || this.email=='' || this.password==''|| this.password2==''|| this.cardType=='' || this.cardNumber=='' || this.securityCode=='' || this.expirationDate == '' )
       {
         this.errorMessage='Please fill all fields!';
         this.messageUspjesno='';
@@ -69,10 +73,12 @@ constructor(private _userService: UserService,private _registracijaService:Regis
         this.messageUspjesno='';
         return;
       }
-      this.novi=new Osoba(this.ime, this.prezime, this.email, this.password, this.url_slike);
+      this.novi=new Osoba(this.ime, this.prezime, this.email, this.password, this.password2);
       USERS.push(this.novi);
       this.errorMessage="";
-      this.router.navigateByUrl('/mainpage');
+      console.log("Users", USERS);
+
+      this.router.navigateByUrl('/all');
     }
 
     login(){
@@ -86,7 +92,7 @@ constructor(private _userService: UserService,private _registracijaService:Regis
       let objIndex = USERS.findIndex((obj => obj.email == this.email_login));
 
       if (objIndex < 0) {
-        this.errorMessage = "Invalid email or password";
+        this.errorMessage = "Invalid email";
       } else {
         if (USERS[objIndex].password == this.password_login) {
           this.router.navigateByUrl('/all');

@@ -1,3 +1,7 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -24,22 +28,35 @@
       </blockquote>
 
 
-  <div class='block'>
+    <div class='block'>
 
-<blockquote class='left-vertical-line'>
+      <blockquote class='left-vertical-line'>
 
-  <h1>REGISTRATION</h1>
-  <input type="text" [(ngModel)]="ime" name="ime" placeholder="Name" required>
-  <input type="text" [(ngModel)]="prezime" name="prezime" placeholder="Last name" required>
-  <input type="text" [(ngModel)]="email" name="email" placeholder="Email" required>
+        <div class='flex-class'>
+          <div>
+            <h1 class="padding-zero">REGISTRATION</h1>
+            <div class="padding-form">
+              <input type="text" [(ngModel)]="ime" name="ime" placeholder="Name" required>
+              <input type="text" [(ngModel)]="prezime" name="prezime" placeholder="Last name" required>
+              <input type="text" [(ngModel)]="email" name="email" placeholder="Email" required>
 
-  <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required>
-  <input type="password" [(ngModel)]="password2" name="password" placeholder="Confirm password" required>
+              <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required>
+              <input type="password" [(ngModel)]="password2" name="password" placeholder="Confirm password" required>
+            </div>
+          </div>
+          <div class="padding-left-20">
+            <input type="text" [(ngModel)]="cardType" name="cardType" placeholder="Card Type" required>
+            <input type="text" [(ngModel)]="cardNumber" name="cardNumber" placeholder="Card Number" required>
+            <input type="text" [(ngModel)]="securityCode" name="securityCode" placeholder="Security Code" required>
+            <input type="text" [(ngModel)]="expirationDate" name="expirationDate" placeholder="Expiration Date" required>
 
-  <button (click)="print()">Registration</button>
+            <button (click)="print()">Registration</button>
+          </div>
+        </div>
 
-    </blockquote>
+      </blockquote>
     </div>
+
     <div class="error" *ngIf="errorMessage!=''">{{errorMessage}}</div>
     <div class="poruka" *ngIf="messageUspjesno!=''">{{messageUspjesno}}</div>
 </div>
